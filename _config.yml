@@ -1,7 +1,5 @@
 url: https://youngsam-byun.github.io
 baseurl: /my-notes.github.io
-#theme: just-the-docs
-#remote_theme: just-the-docs
-
-title: hello
+remote_theme: just-the-docs/just-the-docs
+title: daddyLeetcode
 footer_content: "Copyright &copy; 2017-2020 Patrick Marsceill. Distributed by an <a href=\"https://github.com/just-the-docs/just-the-docs/tree/main/LICENSE.txt\">MIT license.</a>"
