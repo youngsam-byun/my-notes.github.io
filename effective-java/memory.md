@@ -1,5 +1,6 @@
 ---
 layout: page
+category: effective-java
 title: Customization
 nav_order: 1
 ---
