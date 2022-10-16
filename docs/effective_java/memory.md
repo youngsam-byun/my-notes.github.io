@@ -4,10 +4,7 @@ title: memory1.md
 nav_order: 2
 parent: effective_java
 ---
-
-<head>
-  {% include listSnippet.html %}
-</head>
+{% include_relative ../../assets/html/common.html %}
 
 ```java
 System.out.println("asdfsadf");
