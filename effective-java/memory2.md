@@ -1,6 +1,6 @@
 ---
 layout: page
-title: programming notes
+title: memory2.md
 ---
 
 ```java
