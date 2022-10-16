@@ -4,14 +4,17 @@
      *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
      *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
     var disqus_config = function () {
-        // we are using document.location.* here because Jekyll code does not work well in JS code.
-        this.page.url = document.location.href;
-        this.page.identifier = document.location.pathname;
+        // Here is an example,
+        // this.page.url = "https://poanchen.github.io/blog/2017/07/27/how-to-add-disqus-to-your-jekyll-site";
+        this.page.url = "https://youngsam-byun.github.io/my-notes.github.io/{{ page.url }}";
+        this.page.identifier = "{{ page.url }}";
     };
 
+    // You should be able to get the following lines of code from your Disqus admin.
+    // https://disqus.com/admin/universalcode
     (function() { // DON'T EDIT BELOW THIS LINE
         var d = document, s = d.createElement('script');
-        s.src = 'https://https-youngsam-byun-github-io-my-notes-github-io.disqus.com/embed.js';
+        s.src = '//disqus_oDrbBq3wat.disqus.com/embed.js';
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
     })();
