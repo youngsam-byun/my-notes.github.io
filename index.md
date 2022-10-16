@@ -1,6 +1,6 @@
 ---
 layout: page
-title: programming notes
+title: java final
 ---
 
 ```java
