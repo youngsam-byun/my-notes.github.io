@@ -1,5 +1,5 @@
 ---
 layout: page
-title: articles
+title: docs
 has_children: true
 ---

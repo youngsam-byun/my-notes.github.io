@@ -1,7 +1,7 @@
 ---
 layout: page
-title: memory1.md
-parent: effective_java
+title: memory2.md
+parent: docs
 ---
 
 ```java
