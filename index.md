@@ -1,8 +1,11 @@
 ---
 layout: page
-title: landing page
+title: books 
 ---
 
 ```java
-System.out.println("asdfsadf");
+grit
+clean code
+effective java
+
 ```
