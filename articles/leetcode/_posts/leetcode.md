@@ -1,6 +1,6 @@
 ---
 layout: page
-title: leetcode1.md
+title: leetcode solution 1
 parent: leetcode
 ---
 

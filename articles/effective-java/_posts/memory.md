@@ -1,7 +1,7 @@
 ---
 layout: page
 title: memory1.md
-parent: effective-java
+parent: effective_java
 ---
 
 ```java

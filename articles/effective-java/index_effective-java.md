@@ -1,6 +1,6 @@
 ---
 layout: page
-title: effective-java
+title: effective_java
 parent: articles
 has_children: true
 ---
