@@ -1,7 +1,7 @@
 ---
 layout: page
 title: leetcode.md
-parent: leetcode
+parent: articles
 has_children: true
 ---
 

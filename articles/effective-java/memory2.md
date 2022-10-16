@@ -1,7 +1,7 @@
 ---
 layout: page
 title: memory2.md
-parent: effective-java
+parent: articles
 has_children: true
 ---
 
