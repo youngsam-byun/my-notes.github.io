@@ -5,9 +5,8 @@ title: programming notes and ...
 footer_content: "Copyright &copy; 2017-2020 Patrick Marsceill. Distributed by an <a href=\"https://github.com/just-the-docs/just-the-docs/tree/main/LICENSE.txt\">MIT license.</a>"
 
 collections:
-  effect-java:
+  my_collections:
     output: true
-  leetcode:
-    output: true
+    permalink: /:collection/:name
 
 collections_dir: my_collections
