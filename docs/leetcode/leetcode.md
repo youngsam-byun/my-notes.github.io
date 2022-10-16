@@ -1,7 +1,7 @@
 ---
 layout: page
 title: leetcode solution 1
-parent: docs
+parent: leetcode
 ---
 
 ```java
