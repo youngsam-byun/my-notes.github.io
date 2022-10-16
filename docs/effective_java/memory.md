@@ -5,6 +5,7 @@ nav_order: 2
 parent: effective_java
 ---
 {% include common.html %}
+{% include disqus.html %}
 
 ```java
 System.out.println("asdfsadf");
