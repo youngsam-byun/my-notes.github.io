@@ -4,11 +4,12 @@ title: memory2
 nav_order: 2
 parent: effective_java
 ---
+{% include disqus.html %}
 
-{% include common.html %}
 
 
 ```java
 System.out.println("asdfsadf");
 ```
-{% include disqus.html %}
+
+

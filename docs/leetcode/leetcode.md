@@ -9,8 +9,6 @@ parent: leetcode
 {% include disqus.html %}
 
 
-{% include common.html %}
-
 ```java
 System.out.println("hello world");
 ```
