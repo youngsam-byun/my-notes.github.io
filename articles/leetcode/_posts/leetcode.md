@@ -5,5 +5,5 @@ parent: leetcode
 ---
 
 ```java
-leetcode solutoion
+System.out.println("hello world");
 ```
