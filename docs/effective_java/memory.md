@@ -7,9 +7,7 @@ parent: effective_java
 {% include common.html %}
 
 
-<body>
 ```java
 System.out.println("asdfsadf");
 ```
 {% include disqus.html %}
-</body>
