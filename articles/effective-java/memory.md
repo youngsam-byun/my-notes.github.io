@@ -1,8 +1,7 @@
 ---
 layout: page
-title: memory.md
-parent: articles
-has_children: true
+title: memory1.md
+parent: effective-java
 ---
 
 ```java

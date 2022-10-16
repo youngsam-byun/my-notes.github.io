@@ -1,8 +1,7 @@
 ---
 layout: page
-title: leetcode.md
-parent: articles
-has_children: true
+title: leetcode1.md
+parent: leetcode
 ---
 
 ```java
