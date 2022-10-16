@@ -7,6 +7,6 @@ footer_content: "Copyright &copy; 2017-2020 Patrick Marsceill. Distributed by an
 collections:
   my_collections:
     output: true
-    permalink: /:collection/:name
+    permalink: /:collection/:collection/:name
 
 collections_dir: docs
