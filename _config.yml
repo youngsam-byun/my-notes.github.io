@@ -9,4 +9,4 @@ collections:
     output: true
     permalink: /:collection/:name
 
-collections_dir: my_collections
+collections_dir: articles

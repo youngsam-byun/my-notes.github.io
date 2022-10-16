@@ -1,6 +1,8 @@
 ---
 layout: page
-title: memory.md
+title: memory2.md
+parent: effective-java
+has_children: true
 ---
 
 ```java
