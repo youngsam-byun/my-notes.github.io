@@ -1,6 +1,6 @@
 ---
 layout: page
-title: docs
+title: leetcode
 nav_order: 2
 has_children: true
 ---
