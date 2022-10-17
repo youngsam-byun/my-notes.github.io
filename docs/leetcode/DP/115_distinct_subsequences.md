@@ -2,7 +2,7 @@
 layout: page
 parent: DP
 title: Distinct Subsequences
-nav_order: 5
+nav_order: 3
 ---
 
 
