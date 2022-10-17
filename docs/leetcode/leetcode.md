@@ -1,6 +1,8 @@
 ---
 layout: page 
-title: 97. Interleaving String nav_order: 3 parent: leetcode
+title: 97. Interleaving String 
+nav_order:3 
+parent: leetcode
 ---
 
 
