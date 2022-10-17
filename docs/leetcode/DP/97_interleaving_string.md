@@ -1,8 +1,8 @@
 ---
-layout: page 
+layout: page
+parent: DP
 title: Interleaving String
 nav_order: 3
-parent: leetcode
 ---
 
 
