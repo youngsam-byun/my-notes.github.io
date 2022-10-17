@@ -11,7 +11,5 @@ comments: true
 System.out.println("hello world");
 ```
 
-<div>
 {% include disqus.html %}
-</div>
 

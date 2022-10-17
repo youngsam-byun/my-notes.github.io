@@ -11,6 +11,4 @@ comments: true
 System.out.println("asdfsadf");
 ```
 
-<div>
 {% include disqus.html %}
-</div>
