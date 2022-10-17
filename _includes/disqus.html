@@ -6,8 +6,8 @@
     var disqus_config = function () {
         // Here is an example,
         // this.page.url = "https://poanchen.github.io/blog/2017/07/27/how-to-add-disqus-to-your-jekyll-site";
-        this.page.url = "https://youngsam-byun.github.io/my-notes.github.io/{{ page.url }}";
-        this.page.identifier = "{{ page.url }}";
+        this.page.url = document.location.href;
+        this.page.identifier = document.location.pathname;
     };
 
     (function() { // DON'T EDIT BELOW THIS LINE
