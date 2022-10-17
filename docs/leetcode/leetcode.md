@@ -1,13 +1,13 @@
 ---
 layout: page 
-title: interleaving-string
+title: Interleaving String
 nav_order: 3
 parent: leetcode
 ---
 
 
 Question
-97. Interleaving String nav_order: 3 parent: leetcode
+97. Interleaving String
 
 ```
 Given strings s1, s2, and s3, find whether s3 is formed by an interleaving of s1 and s2.
