@@ -2,7 +2,7 @@
 layout: page
 parent: DP
 title: Interleaving String
-nav_order: 3
+nav_order: 2
 ---
 
 
