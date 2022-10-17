@@ -4,9 +4,5 @@ remote_theme: just-the-docs/just-the-docs
 title: programming notes and ...
 footer_content: "Copyright &copy; 2022- <a href=\"https://www.linkedin.com/in/youngsam-byun-54456370/?originalSubdomain=sg\">Youngsam Byun</a>"
 
-#collections:
-#  my_collections:
-#    output: true
-#    permalink: /:collection/:collection/:name
-#
-#collections_dir: docs
+disqus:
+  shortname: https-youngsam-byun-github-io-my-notes-github-io
