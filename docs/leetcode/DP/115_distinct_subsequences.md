@@ -1,6 +1,6 @@
 ---
 layout: page
-parent: leetcode
+parent: DP
 title: Distinct Subsequences
 nav_order: 2
 ---
