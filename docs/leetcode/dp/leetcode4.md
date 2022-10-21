@@ -1,7 +1,7 @@
 ---
 layout: page
 title: leetcode4
-nav_order: 2
+nav_order:5
 parent: leetcode
 ---
 
