@@ -1,7 +1,7 @@
 ---
 layout: page
 title: test3
-nav_order: 7
+nav_order: 3
 parent: test
 comments: true
 ---

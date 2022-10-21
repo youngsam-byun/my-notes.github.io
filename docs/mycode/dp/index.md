@@ -1,6 +1,7 @@
 ---
 layout: page
-title: leetcode
-nav_order:4 
+title: dp
+nav_order: 2
+parent: leetcode
 has_children: true
 ---

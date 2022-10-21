@@ -1,8 +1,9 @@
 ---
 layout: page
-title: leetcode4
-nav_order:5
-parent: leetcode
+title: leetcode solution
+nav_order: 2
+grand_parent: leetcode
+parent: dp
 ---
 
 
