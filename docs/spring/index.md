@@ -1,6 +1,6 @@
 ---
 layout: page
-title: effective_java
-nav_order: 1
+title: spring
+nav_order`: 3
 has_children: true
 ---

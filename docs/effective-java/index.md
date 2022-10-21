@@ -1,7 +1,6 @@
 ---
 layout: page
-parent: leetcode
-title: DP
-nav_order:3
+title: effective-java
+nav_order: 1
 has_children: true
 ---
