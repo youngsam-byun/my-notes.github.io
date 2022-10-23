@@ -2,10 +2,10 @@
 layout: page
 parent: Effective_Java
 nav_order: 1
-title: When_create_object_builder_pattern_is_well_suited_to_class_hierarchies
+title: When create object builder pattern is well suited to class hierarchies
 ---
 
-### Abstract super class Pizza
+### Test
 ```java
 Pizza nyPizza = new NYPizza.Builder(SMALL)
         .addTopping(Pizza.Topping.SAUSAGE)
@@ -19,6 +19,7 @@ Pizza nyPizza = new NYPizza.Builder(SMALL)
 
 ```
 
+### Abstract super class Pizza
 ```java
 package chapter2.builder;
 

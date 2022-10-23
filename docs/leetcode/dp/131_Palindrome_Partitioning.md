@@ -3,7 +3,7 @@ layout: page
 grand_parent: Leetcode 
 parent: dp 
 nav_order: 2 
-title: 131_Palindrome_Partitioning
+title: 131 Palindrome Partitioning
 ---
 
 [https://leetcode.com/problems/palindrome-partitioning/](https://leetcode.com/problems/palindrome-partitioning//)

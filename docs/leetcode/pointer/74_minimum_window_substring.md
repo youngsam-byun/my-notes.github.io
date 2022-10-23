@@ -1,6 +1,6 @@
 ---
 layout: page
-title: 74_minimum_window_substring
+title: 74 minimum window substring
 nav_order: 2
 grand_parent: Leetcode
 parent: pointer

@@ -3,7 +3,7 @@ layout: page
 grand_parent: Leetcode 
 parent: dp 
 nav_order: 2 
-title: 120_Triangle
+title: 120 Triangle
 ---
 
 [https://leetcode.com/problems/triangle/](https://leetcode.com/problems/triangle/)
