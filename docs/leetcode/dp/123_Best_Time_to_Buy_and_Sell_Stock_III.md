@@ -1,6 +1,6 @@
 ---
 layout: page 
-grand_parent: leetcode 
+grand_parent: Leetcode 
 parent: dp 
 nav_order: 2 
 title: 123_Best_Time_to_Buy_and_Sell_Stock_III

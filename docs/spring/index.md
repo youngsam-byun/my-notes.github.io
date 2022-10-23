@@ -1,6 +1,6 @@
 ---
 layout: page
-title: spring
+title: Spring
 nav_order`: 3
 has_children: true
 ---

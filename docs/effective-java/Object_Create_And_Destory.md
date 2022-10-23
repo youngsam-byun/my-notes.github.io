@@ -1,6 +1,6 @@
 ---
 layout: page
-parent: effective-java
+parent: Effective_Java
 nav_order: 1
 title: Object_Create_And_Destory
 ---

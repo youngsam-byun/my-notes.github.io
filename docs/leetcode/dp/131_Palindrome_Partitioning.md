@@ -1,6 +1,6 @@
 ---
 layout: page 
-grand_parent: leetcode 
+grand_parent: Leetcode 
 parent: dp 
 nav_order: 2 
 title: 131_Palindrome_Partitioning
