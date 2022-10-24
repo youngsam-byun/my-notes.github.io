@@ -5,6 +5,18 @@ nav_order: 1
 title: When create object builder pattern is well suited to class hierarchies
 ---
 
+```
+Consider static factory methods instead of constructors
+ - they have names
+ - it can control no of instances 
+ - it can return subtypes
+ - factory doesn't have to contain returned object method e.g: JDBC API
+
+Sometimes, 
+Telescoping constructor patterns has too many arguments and method
+Java bean pattern violate immutable class 
+```
+
 ### Test
 ```java
 Pizza nyPizza = new NYPizza.Builder(SMALL)
