@@ -51,7 +51,41 @@ class Solution {
 
 ###iterative
 ```java
+class Solution {
+    public int maxLength(List<String> arr) {
+        int n=arr.size();
 
+        List<Integer> validMask=new ArrayList<>();
+        validMask.add(0);
+        int max=0;
+
+        Set<Integer> notUnique = new HashSet<>();
+        for(int i=0;i<n;i++){
+            String a=arr.get(i);
+            int m=0;
+            for(char c:a.toCharArray()){
+                if((m&(1<<(c-'a')))!=0){
+                    notUnique.add(i);
+                }
+                m|=(1<<(c-'a'));
+            }
+
+            if(notUnique.contains(i)) continue;
+
+            int size=validMask.size();
+            for(int j=0;j<size;j++){
+                int v=validMask.get(j);
+                if((m&v)!=0) continue;
+
+                max=Math.max(max,Integer.bitCount(m|v));
+                validMask.add(m|v);
+            }
+
+        }
+
+        return max;
+    }
+}
 ```
 
 {% include disqus.html %}
