@@ -6,7 +6,7 @@ nav_order: 2
 title: 131 Palindrome Partitioning
 ---
 
-[https://leetcode.com/problems/palindrome-partitioning/](https://leetcode.com/problems/palindrome-partitioning//)
+[https://leetcode.com/problems/palindrome-partitioning/](https://leetcode.com/problems/palindrome-partitioning/)
 
 ###recursive
 ```java
