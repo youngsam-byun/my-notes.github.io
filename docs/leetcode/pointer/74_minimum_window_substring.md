@@ -3,7 +3,7 @@ layout: page
 title: 74 minimum window substring
 nav_order: 2
 grand_parent: Leetcode
-parent: pointer
+parent: Pointer
 ---
 
 [https://leetcode.com/problems/minimum-window-substring/](https://leetcode.com/problems/minimum-window-substring/)
