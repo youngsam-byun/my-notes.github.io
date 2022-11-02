@@ -70,6 +70,8 @@ public static void increaseHeight(Rectangle rectangle){
         System.out.println(square);
     }
 ```
+<img src="images/effective-java/lsp/lsp-1.jpg">
+<img src="images/effective-java/lsp/lsp-2.jpg">
 
 {% include disqus.html %}
 
