@@ -5,12 +5,15 @@
     "jest": true
   },
   "extends": [
+    "react-app",
+    "react-app/jest",
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
-    "prettier"
-  ],
-  "overrides": [
+    "prettier",
+    "plugin:promise/recommended",
+    "plugin:cypress/recommended",
+    "plugin:prettier/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -21,7 +24,8 @@
     "react",
     "react-hooks",
     "@typescript-eslint",
-    "prettier"
+    "prettier",
+    "import"
   ],
   "rules": {
     "no-duplicate-imports": "error",
@@ -31,11 +35,33 @@
     "no-return-await": "error",
     "no-param-reassign": "error",
     "@typescript-eslint/no-explicit-any": "error",
-    "@typescript-eslint/no-inferrable-types": "error"
+    "@typescript-eslint/no-inferrable-types": "error",
+    "quotes": [
+      2,
+      "single",
+      {
+        "avoidEscape": true
+      }
+    ],
+    "import/no-default-export": "error",
+    "promise/prefer-await-to-then": "error",
+    "promise/prefer-await-to-callbacks": "error"
   },
   "settings": {
     "import/resolver": {
       "typescript": {}
     }
-  }
+  },
+  "ignorePatterns": [
+    "*.min.js"
+  ],
+  "overrides": [
+    {
+      "files": "*.stories.tsx",
+      "rules": {
+        "import/no-default-export": "off",
+        "import/no-anonymous-default-export": "off"
+      }
+    }
+  ]
 }
