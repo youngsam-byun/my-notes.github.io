@@ -76,7 +76,7 @@ class Solution {
         for (int j = 0; j <= k; j++) {
             min = Math.min(min, memo[n][j]);
         }
-        return min;
+        return min;1
     }
 ```
 
