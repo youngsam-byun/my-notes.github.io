@@ -6,10 +6,10 @@ export function I18nView() {
 
   return (
     <div>
-      <span>language : {i18n.language}</span>
-      <h1>{t('welcome')}</h1>
-      <button onClick={() => i18n.changeLanguage('ko')}>Korean</button>
-      <button onClick={() => i18n.changeLanguage('en')}>English</button>
+      <span>language: {i18n.language}</span>
+      <h1>{t('label:test')}</h1>
+      <button onClick={() => i18n.changeLanguage('ko-KR')}>Korean</button>
+      <button onClick={() => i18n.changeLanguage('en-US')}>English</button>
     </div>
   );
 }
