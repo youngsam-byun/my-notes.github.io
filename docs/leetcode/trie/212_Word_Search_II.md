@@ -68,6 +68,7 @@ class Solution {
             res.add(t);
         }
 
+        
         dfs(board,i-1,j,t,curr,res,visit);
         dfs(board,i,j+1,t,curr,res,visit);
         dfs(board,i+1,j,t,curr,res,visit);

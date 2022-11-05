@@ -1,5 +1,6 @@
 import { InitOptions } from 'i18next';
 import { getBrowserLocalesCode, LocalesCode } from './locales';
+import { format } from './format';
 
 // eslint-disable-next-line
 const resourceBundle = require("i18next-resource-store-loader!../../locales/index");
@@ -11,6 +12,7 @@ export const initOptions: InitOptions = {
   interpolation: {
     escapeValue: false,
     formatSeparator: '|',
+    format: format,
   },
   react: {
     transSupportBasicHtmlNodes: true,
