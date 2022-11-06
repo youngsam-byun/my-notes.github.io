@@ -75,10 +75,8 @@ describe('format.test.ts', () => {
       expect(res[1]).toBe('argument');
     });
     it('format test', () => {
-      const res = format('', 'numberWithCommas:1000', 'en-US');
-      console.log(res);
-      const res1 = 'numberWithCommas'.split('|').map((str: string) => str.trim());
-      console.log(res1);
+      const res = format(1000, 'numberWithCommas');
+      expect(res).toBe('1,000');
     });
   });
 });

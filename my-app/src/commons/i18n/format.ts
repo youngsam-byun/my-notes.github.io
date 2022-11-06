@@ -47,15 +47,20 @@ export const parseFnAndArgs = (formatter: string) => {
 };
 
 export const format: FormatFunction = (
+  // eslint-disable-next-line
   value: any,
   formatString: string | undefined,
   lang: string | undefined,
 ): string => {
-  (formatString ?? '')
-    .split('|')
-    .map((str: string) => str.trim())
+  return (
+    (formatString ?? '')
+      .split('|')
+      .map((str: string) => str.trim())
+      // eslint-disable-next-line
     .reduce((prev: any, formatter: string) => {
-      const [fn, formatArg] = parseFnAndArgs(formatter);
-      return getFormatter(fn)(prev, formatArg, lang);
-    }, value);
+        const [fn, formatArg] = parseFnAndArgs(formatter);
+        const res = getFormatter(fn)(prev, formatArg, lang);
+        return res;
+      }, value)
+  );
 };
