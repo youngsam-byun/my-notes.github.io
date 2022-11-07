@@ -46,7 +46,7 @@ export const parseFnAndArgs = (formatter: string) => {
   return [formatter];
 };
 
-export const format: FormatFunction = (
+export const formats: FormatFunction = (
   // eslint-disable-next-line
   value: any,
   formatString: string | undefined,

@@ -1,14 +1,13 @@
 import {
-  format,
+  formats,
   formatToFunction,
   getFormatter,
   numberWithCommas,
   parseFnAndArgs,
   stripQuotes,
-} from './format';
+} from './formats';
 
-export {};
-describe('format.test.ts', () => {
+describe('formats.test.ts', () => {
   describe('reduce test', () => {
     it('array of function to map conversion', () => {
       function testFunction(): string {
@@ -56,7 +55,7 @@ describe('format.test.ts', () => {
     });
   });
 
-  describe('format related test', () => {
+  describe('formats related test', () => {
     it('numberwithcommas test', () => {
       const funcNumberWithCommas = formatToFunction['numberwithcommas'];
       expect(typeof funcNumberWithCommas).toBe('function');
@@ -74,8 +73,8 @@ describe('format.test.ts', () => {
       expect(res[0]).toBe('functionName');
       expect(res[1]).toBe('argument');
     });
-    it('format test', () => {
-      const res = format(1000, 'numberWithCommas');
+    it('formats test', () => {
+      const res = formats(1000, 'numberWithCommas');
       expect(res).toBe('1,000');
     });
   });
