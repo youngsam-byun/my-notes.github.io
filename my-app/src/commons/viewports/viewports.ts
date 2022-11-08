@@ -24,8 +24,8 @@ export const viewPorts: {
   tablet: {
     name: 'Tablet',
     styles: {
-      width: '768',
-      height: '1024',
+      width: '768px',
+      height: '1024px',
     },
   },
   desktop: {
@@ -36,7 +36,7 @@ export const viewPorts: {
     },
   },
   wideDesktop: {
-    name: 'Laptop',
+    name: 'WideDesktop',
     styles: {
       width: '1440px',
       height: '900px',

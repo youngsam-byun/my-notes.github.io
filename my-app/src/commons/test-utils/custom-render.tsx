@@ -1,8 +1,10 @@
 import React from 'react';
 import { BreakpointContext } from '../responsive/breakpoint-context';
+import { render, RenderOptions } from '@testing-library/react';
 
-type IWidthProps = {
+export type IWidthProps = {
   width: number;
+  children?: React.ReactNode;
 };
 
 export interface IWrapperExtensions<T> {
@@ -12,7 +14,7 @@ export interface IWrapperExtensions<T> {
 }
 
 export const BreakpointProviderWrapper: React.FC<IWidthProps> &
-  IWrapperExtensions<IWidthProps> = ({ width, children }) => {
+  IWrapperExtensions<IWidthProps> = ({ width, children }: IWidthProps) => {
   return (
     <BreakpointContext.Provider value={{ width }}>
       {children}
@@ -24,4 +26,24 @@ BreakpointProviderWrapper.displayName = 'BreakpointProviderWrapper';
 BreakpointProviderWrapper.withProps =
   (props) =>
   ({ children }) =>
-    <BreakpointProviderWrapper {...props} children={children} />;
+    (
+      <BreakpointProviderWrapper {...props}>
+        {children}
+      </BreakpointProviderWrapper>
+    );
+
+export const renderBreakpoint = (
+  ui: React.ReactElement,
+  options?: Omit<RenderOptions, 'queries'> & IWidthProps,
+) =>
+  render(ui, {
+    wrapper: (props: unknown) => (
+      <BreakpointProviderWrapper
+        {...(typeof props === 'object' ? props : {})}
+        width={options?.width ?? 10}
+      >
+        {options?.children}
+      </BreakpointProviderWrapper>
+    ),
+    ...options,
+  });
