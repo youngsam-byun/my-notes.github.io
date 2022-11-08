@@ -1,6 +1,6 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
-import { IWidthProps, renderBreakpoint } from '../test-utils/custom-render';
+import { IWidthProps} from './breakpoint-provider-wrapper';
 import {
   DesktopAndDown,
   DesktopAndUp,
@@ -10,6 +10,7 @@ import {
   TabletOnly,
   WideDesktopAndUp,
 } from './Breakpoints';
+import { renderBreakpoint } from "../test-utils/test-utils";
 const PHONE_ONLY = 'PhoneOnly';
 const TABLET_ONLY = 'TabletOnly';
 const TABLET_AND_UP = 'TabletAndUp';

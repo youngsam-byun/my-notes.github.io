@@ -1,6 +1,6 @@
 import { createContext } from 'react';
 import { widthsPx } from './breakpoint-widths';
 
-export const BreakpointContext = createContext({
+export const CreateBreakpointContext = createContext({
   width: widthsPx.min.tablet,
 });

@@ -1,5 +1,5 @@
 import useResizeObserver from 'use-resize-observer/polyfilled';
-import { BreakpointContext } from './breakpoint-context';
+import { CreateBreakpointContext } from './create-breakpoint-context';
 import {
   DesktopAndDown,
   DesktopAndUp, DesktopOnly,
@@ -30,7 +30,7 @@ const WrappedBreakpoints = () => {
   const { ref } = useResizeObserver<HTMLDivElement>();
   const width = window.innerWidth;
   return (
-    <BreakpointContext.Provider value={{ width }}>
+    <CreateBreakpointContext.Provider value={{ width }}>
       <h1>Breakpoints</h1>
       <div ref={ref}>
         <PhoneOnly>
@@ -59,7 +59,7 @@ const WrappedBreakpoints = () => {
         </WideDesktopAndUp>
       </div>
       <Padding />
-    </BreakpointContext.Provider>
+    </CreateBreakpointContext.Provider>
   );
 };
 
