@@ -37,8 +37,6 @@ class Solution {
             }
 
         }
-
-
         return (int)res[n-1];
 
     }
