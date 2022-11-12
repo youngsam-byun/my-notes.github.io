@@ -2,13 +2,14 @@ import useResizeObserver from 'use-resize-observer/polyfilled';
 import { CreateBreakpointContext } from './create-breakpoint-context';
 import {
   DesktopAndDown,
-  DesktopAndUp, DesktopOnly,
+  DesktopAndUp,
+  DesktopOnly,
   PhoneOnly,
   TabletAndDown,
   TabletAndUp,
   TabletOnly,
-  WideDesktopAndUp
-} from "./Breakpoints";
+  WideDesktopAndUp,
+} from './Breakpoints';
 import React from 'react';
 import { viewPorts } from '../viewports/viewports';
 import { Story } from '@storybook/react';
