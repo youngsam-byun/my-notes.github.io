@@ -42,6 +42,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-storybook": "^0.6.7",
     "husky": "^8.0.2",
+    "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
     "prop-types": "^15.8.1",
     "react-scripts": "5.0.1",
@@ -76,6 +77,7 @@
   },
   "lint-staged": {
     "*.{ts|tsx}": "eslint --fix ",
-    "*.{js,css,md,html,json}": "prettier --cache --write"
+    "*.{js,css,md,html,json}": "prettier --cache --write",
+    "*.{js,jsx,ts,tsx}": "eslint --cache --fix"
   }
 }
