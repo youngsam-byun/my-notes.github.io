@@ -47,7 +47,8 @@
     "styled-components": "^5.3.6",
     "typescript": "^4.8.4",
     "use-resize-observer": "^9.0.2",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "husky": "^8.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -58,7 +59,8 @@
     "lint:fix": "eslint src --fix --ext .js,.jsx,.ts,.tsx",
     "format": "prettier --write 'src/**' --config ./.prettierrc",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "prepare": "husky install"
   },
   "browserslist": {
     "production": [
@@ -71,5 +73,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "lint-staged": {
+    "*.js": "eslint --fix ",
+    "*.{js,css,md,html,json}": "prettier --cache --write"
   }
 }
