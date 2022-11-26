@@ -3,12 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "i18next": "^22.0.4",
-    "i18next-browser-languagedetector": "^7.0.1",
-    "i18next-resource-store-loader": "^0.0.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-i18next": "^12.0.0"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^6.5.13",
@@ -50,7 +46,11 @@
     "styled-components": "^5.3.6",
     "typescript": "^4.8.4",
     "use-resize-observer": "^9.0.2",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "react-i18next": "^12.0.0",
+    "i18next": "^22.0.4",
+    "i18next-browser-languagedetector": "^7.0.1",
+    "i18next-resource-store-loader": "^0.0.2"
   },
   "scripts": {
     "start": "react-scripts start",
