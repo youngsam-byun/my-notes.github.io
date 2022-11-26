@@ -4,6 +4,9 @@ import { viewPorts } from '../src/commons/viewports/viewports';
 import { i18n } from "../src/commons/i18n/i18n";
 import { I18nextProvider } from "react-i18next";
 import { Locales } from "../src/commons/i18n/locales";
+import { ThemeProvider } from "styled-components";
+import { defaultTheme } from "../src/styles/default-theme";
+import { DefaultGlobalStyle} from "../src/styles/DefaultGlobalStyle";
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -45,9 +48,12 @@ const withI18next = (Story, context) => {
 
   return (
     <Suspense fallback={<div>loading translations...</div>}>
-      <I18nextProvider i18n={i18n}>
-        <Story />
-      </I18nextProvider>
+      <ThemeProvider theme={defaultTheme} >
+        <DefaultGlobalStyle />
+        <I18nextProvider i18n={i18n}>
+          <Story />
+        </I18nextProvider>
+      </ThemeProvider>
     </Suspense>
   );
 };
