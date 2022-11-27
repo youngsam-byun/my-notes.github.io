@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentMeta, Story } from '@storybook/react';
-import { I18nView as I18nViewComponent } from './i18n-view';
+import { I18View as I18nViewComponent } from './I18View';
 
 export default {
   title: 'I18nView',

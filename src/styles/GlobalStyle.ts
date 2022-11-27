@@ -1,6 +1,6 @@
 import { createGlobalStyle, css } from 'styled-components';
 
-export const DefaultGlobalStyle = createGlobalStyle` 
+export const GlobalStyle = createGlobalStyle` 
 ${({ theme }) => css`
   html {
     *,
@@ -31,8 +31,6 @@ ${({ theme }) => css`
       justify-content: left;
       height: 100%;
       margin: 0;
-      background: ${theme.colors.white};
-      color: ${theme.colors.black};
       font-family: sans-serif;
     }
   }
