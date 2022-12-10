@@ -7,7 +7,7 @@ import {
 import styled from 'styled-components';
 
 export default {
-  title: 'Components/Responsive/Container',
+  title: 'Commons/Container',
   component: ResponsiveContainer,
 } as Meta;
 

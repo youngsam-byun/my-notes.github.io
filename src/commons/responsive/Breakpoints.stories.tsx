@@ -65,7 +65,7 @@ const WrappedBreakpoints = () => {
 };
 
 export default {
-  title: 'Components/Responsive/Breakpoints',
+  title: 'Commons/Breakpoints',
   component: PhoneOnly,
   parameters: {
     viewport: {

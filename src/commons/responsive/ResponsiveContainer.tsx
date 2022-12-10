@@ -1,6 +1,7 @@
 import React, { CSSProperties } from 'react';
 import styled, { css } from 'styled-components';
 import { desktopUp, phoneOnly, tabletOnly, tabletUp } from './media-queries';
+import { defaultTheme } from '../../styles/default-theme';
 
 export interface IResponsiveContainer {
   children: React.ReactNode;
@@ -102,7 +103,7 @@ export const ResponsiveContainer = ({
   fullHeight = false,
   maxContentWidth = defaultMaxContentWidth,
 }: IResponsiveContainer) => {
-  const bgColor = gray ? 'gray' : '';
+  const bgColor = gray ? defaultTheme.colors.gray : '';
   const containerVerticalSpace = verticalSpace ?? defaultPadding.vertical;
   return (
     <Container
