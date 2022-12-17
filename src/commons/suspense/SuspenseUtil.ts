@@ -3,7 +3,7 @@ export function wrapPromise(promise: Promise<unknown>) {
 
   let response: unknown;
 
-  // eslint-disable-next-line promise/prefer-await-to-then
+  // eslint-disable-next-line
   const suspender = promise.then(
     // eslint-disable-next-line promise/always-return
     (res) => {

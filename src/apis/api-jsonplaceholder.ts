@@ -1,14 +1,15 @@
 import { wrapPromise } from '../commons/suspense/SuspenseUtil';
+import axios, { AxiosResponse } from 'axios';
 
 export function fetchAllPosts() {
-  const promise = fetch('https://jsonplaceholder.typicode.com/posts')
-    // eslint-disable-next-line promise/prefer-await-to-then
+  const promise = axios
+    .get('https://jsonplaceholder.typicode.com/posts')
     .then(
-      (res) => new Promise((resolve) => setTimeout(() => resolve(res), 3000)),
+      (res: AxiosResponse) =>
+        new Promise((resolve) => setTimeout(() => resolve(res), 3000)),
     )
-    // eslint-disable-next-line promise/prefer-await-to-then,@typescript-eslint/ban-ts-comment
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    // eslint-disable-next-line promise/prefer-await-to-then
-    .then((res) => res.json());
+    .then((res) => res.data);
   return wrapPromise(promise);
 }

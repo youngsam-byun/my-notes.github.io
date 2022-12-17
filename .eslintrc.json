@@ -44,7 +44,9 @@
     ],
     "import/no-default-export": "error",
     "promise/prefer-await-to-then": "error",
-    "promise/prefer-await-to-callbacks": "error"
+    "promise/prefer-await-to-callbacks": "error",
+    "promise/prefer-await-to-callbacks": "error",
+    "promise/prefer-await-to-then": "off"
   },
   "settings": {
     "import/resolver": {
