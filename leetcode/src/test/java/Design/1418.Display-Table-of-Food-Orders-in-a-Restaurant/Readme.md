@@ -1,4 +1,4 @@
-### 1418.Display-Table-of-Food-Orders-in-a-Restaurant
+### 1418.SampleDisplay-Table-of-Food-Orders-in-a-Restaurant
 
 本题有很多数据结构的设计方法，但是彼此之间的时间复杂度差别很大。
 

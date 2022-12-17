@@ -7,7 +7,9 @@ public class MathFunctionTest {
 
     @Test
     void ceilingTest(){
-        int height= (int)Math.ceil((Math.log(3.9)/Math.log(2)));
-        System.out.println(height);
+        String a="01010101010101010101010101010101";
+        int b=0x55555555;
+        System.out.println(Integer.valueOf(a,2));
+        System.out.println(b);
     }
 }
