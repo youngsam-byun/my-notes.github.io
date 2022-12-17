@@ -1,24 +1,19 @@
 import React from 'react';
 import { viewPorts } from '../../commons/viewports/viewports';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Header } from './Header';
+import { SampleDisplay } from './SampleDisplay';
 
 export default {
-  title: 'Components/Header',
-  component: Header,
+  title: 'Components/SampleDisplay',
+  component: SampleDisplay,
   parameters: {
     viewport: {
       defaultViewport: viewPorts.tablet,
     },
   },
-} as ComponentMeta<typeof Header>;
+} as ComponentMeta<typeof SampleDisplay>;
 
-const Template: ComponentStory<typeof Header> = (args) => (
-  <Header {...args}>Header Title</Header>
+const Template: ComponentStory<typeof SampleDisplay> = (args) => (
+  <SampleDisplay />
 );
 export const Primary = Template.bind({});
-Primary.args = {
-  color: 'white',
-  bgColor: 'red',
-  height: '3rem',
-};
