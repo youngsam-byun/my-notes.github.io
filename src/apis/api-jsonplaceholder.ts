@@ -8,7 +8,6 @@ export function fetchAllPosts() {
       (res: AxiosResponse) =>
         new Promise((resolve) => setTimeout(() => resolve(res), 3000)),
     )
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     .then((res) => res.data);
   return wrapPromise(promise);

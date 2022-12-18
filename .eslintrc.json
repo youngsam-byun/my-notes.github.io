@@ -46,7 +46,8 @@
     "promise/prefer-await-to-then": "error",
     "promise/prefer-await-to-callbacks": "error",
     "promise/prefer-await-to-callbacks": "error",
-    "promise/prefer-await-to-then": "off"
+    "promise/prefer-await-to-then": "off",
+    "@typescript-eslint/ban-ts-comment": "off"
   },
   "settings": {
     "import/resolver": {
