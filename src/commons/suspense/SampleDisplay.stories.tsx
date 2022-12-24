@@ -1,19 +1,19 @@
 import React from 'react';
 import { viewPorts } from '../../commons/viewports/viewports';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { SampleDisplay } from './SampleDisplay';
+import { SuspenseExample } from './SuspenseExample';
 
 export default {
-  title: 'Components/SampleDisplay',
-  component: SampleDisplay,
+  title: 'Components/SuspenseExample',
+  component: SuspenseExample,
   parameters: {
     viewport: {
       defaultViewport: viewPorts.tablet,
     },
   },
-} as ComponentMeta<typeof SampleDisplay>;
+} as ComponentMeta<typeof SuspenseExample>;
 
-const Template: ComponentStory<typeof SampleDisplay> = (args) => (
-  <SampleDisplay />
+const Template: ComponentStory<typeof SuspenseExample> = (args) => (
+  <SuspenseExample />
 );
 export const Primary = Template.bind({});

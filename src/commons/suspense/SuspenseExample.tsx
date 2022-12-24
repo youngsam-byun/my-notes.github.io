@@ -1,7 +1,7 @@
 import React, { Suspense, useEffect, useState } from 'react';
 import { PostList } from './PostList';
 
-export function SampleDisplay() {
+export function SuspenseExample() {
   console.log('render');
   const [state, setState] = useState('init');
   useEffect(() => {
