@@ -3,7 +3,7 @@ layout: page
 grand_parent: Leetcode 
 parent: dp 
 nav_order: 2 
-title: 120 Triangle
+title: 115 Distinct Dubsequences
 ---
 
 [https://leetcode.com/problems/distinct-subsequences/](https://leetcode.com/problems/distinct-subsequences/)
