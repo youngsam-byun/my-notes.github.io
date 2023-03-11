@@ -1,7 +1,7 @@
 import React from 'react';
 import { renderHook } from '@testing-library/react';
-import { useBreakpointContext } from './use-breakpoint-context';
-import { BreakpointProviderWrapper } from './breakpoint-provider-wrapper';
+import { useBreakpointContext } from '../use-breakpoint-context';
+import { BreakpointProviderWrapper } from '../breakpoint-provider-wrapper';
 
 describe('use-breakpoint-context.test.tsx', () => {
   it.each([

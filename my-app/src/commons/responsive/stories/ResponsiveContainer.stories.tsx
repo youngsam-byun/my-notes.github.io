@@ -3,11 +3,11 @@ import { Meta, Story } from '@storybook/react';
 import {
   ResponsiveContainer,
   IResponsiveContainer,
-} from './ResponsiveContainer';
+} from '../ResponsiveContainer';
 import styled from 'styled-components';
 
 export default {
-  title: 'Components/Responsive/Container',
+  title: 'Commons/Container',
   component: ResponsiveContainer,
 } as Meta;
 

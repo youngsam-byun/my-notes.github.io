@@ -2,9 +2,7 @@
 // @ts-ignore
 import { FormatFunction } from 'i18next';
 // eslint-disable-next-line
-type Formatter = (value: any,
-                  formatString?: string,
-                  lang?: string) => string;
+type Formatter = (value: any, formatString?: string, lang?: string) => string;
 const noop: Formatter = (value) => value;
 
 export const numberWithCommas: Formatter = (value, formatString, lang) => {
@@ -57,7 +55,7 @@ export const formats: FormatFunction = (
       .split('|')
       .map((str: string) => str.trim())
       // eslint-disable-next-line
-    .reduce((prev: any, formatter: string) => {
+      .reduce((prev: any, formatter: string) => {
         const [fn, formatArg] = parseFnAndArgs(formatter);
         const res = getFormatter(fn)(prev, formatArg, lang);
         return res;

@@ -6,7 +6,6 @@
   },
   "extends": [
     "react-app",
-    "react-app/jest",
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
@@ -45,16 +44,17 @@
     ],
     "import/no-default-export": "error",
     "promise/prefer-await-to-then": "error",
-    "promise/prefer-await-to-callbacks": "error"
+    "promise/prefer-await-to-callbacks": "error",
+    "promise/prefer-await-to-callbacks": "error",
+    "promise/prefer-await-to-then": "off",
+    "@typescript-eslint/ban-ts-comment": "off"
   },
   "settings": {
     "import/resolver": {
       "typescript": {}
     }
   },
-  "ignorePatterns": [
-    "*.min.js"
-  ],
+  "ignorePatterns": ["*.min.js"],
   "overrides": [
     {
       "files": "*.stories.tsx",

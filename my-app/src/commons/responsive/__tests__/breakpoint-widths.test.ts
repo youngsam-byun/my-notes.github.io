@@ -3,7 +3,7 @@ import {
   pxToRemRaw,
   widthsPx,
   widthsRem,
-} from './breakpoint-widths';
+} from '../breakpoint-widths';
 
 describe('breakpoint.test.ts', () => {
   describe('keyof test', () => {

@@ -4,7 +4,6 @@ import {
   BreakpointProviderWrapper,
   IWidthProps,
 } from '../responsive/breakpoint-provider-wrapper';
-
 export const renderBreakpoint = (
   ui: React.ReactElement,
   options?: Omit<RenderOptions, 'queries'> & IWidthProps,

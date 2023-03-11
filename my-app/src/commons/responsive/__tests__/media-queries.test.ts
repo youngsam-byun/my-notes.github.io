@@ -5,7 +5,7 @@ import {
   tabletOnly,
   tabletUp,
   wideDesktopUp,
-} from './media-queries';
+} from '../media-queries';
 
 describe('media-queries.test.ts', () => {
   describe('media queries test', () => {

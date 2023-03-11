@@ -3,12 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "i18next": "^22.0.4",
-    "i18next-browser-languagedetector": "^7.0.1",
-    "i18next-resource-store-loader": "^0.1.2",
+    "axios": "^1.2.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-i18next": "^12.0.0"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^6.5.13",
@@ -31,8 +28,10 @@
     "@types/styled-components": "^5.1.26",
     "@typescript-eslint/eslint-plugin": "^5.42.0",
     "@typescript-eslint/parser": "^5.42.0",
+    "babel-plugin-named-exports-order": "^0.0.2",
     "eslint": "^8.26.0",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-config-react-app": "^7.0.1",
     "eslint-import-resolver-typescript": "^3.5.2",
     "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-import": "^2.26.0",
@@ -42,14 +41,22 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-storybook": "^0.6.7",
     "husky": "^8.0.2",
+    "i18next": "^22.0.4",
+    "i18next-browser-languagedetector": "^7.0.1",
+    "i18next-resource-store-loader": "^0.0.2",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
     "prop-types": "^15.8.1",
-    "react-scripts": "5.0.1",
+    "react-i18next": "^12.0.0",
+    "react-scripts": "^5.0.1",
+    "semantic-ui-css": "^2.5.0",
+    "semantic-ui-react": "^2.1.4",
     "styled-components": "^5.3.6",
+    "styled-normalize": "^8.0.7",
     "typescript": "^4.8.4",
     "use-resize-observer": "^9.0.2",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "webpack": "^5.75.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -60,8 +67,12 @@
     "lint:fix": "eslint src --fix --ext .js,.jsx,.ts,.tsx",
     "format": "prettier --write 'src/**' --config ./.prettierrc",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public",
-    "prepare": "husky install"
+    "build-storybook": "build-storybook -s public"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "browserslist": {
     "production": [
@@ -76,7 +87,21 @@
     ]
   },
   "lint-staged": {
-    "*.ts": "npm run lint",
-    "*.{js,css,md,html,json}": "npm run format"
+    "src/**/*.{ts,tsx}": [
+      "eslint --ext .tsx --ext .ts ./src --fix"
+    ]
+  },
+  "eslintConfig": {
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-default-export": "off",
+          "import/no-anonymous-default-export": "off"
+        }
+      }
+    ]
   }
 }
