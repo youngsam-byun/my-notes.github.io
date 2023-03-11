@@ -1,7 +1,5 @@
 package test;
 
-import lombok.ToString;
-
 
 public enum Status {
     READ(0), WRITE(1), DELETE(2);
