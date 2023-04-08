@@ -9,7 +9,7 @@ interface IErrorBoundaryState {
   hasError: boolean;
   errors?: Error;
 }
-class ErrorBoundary extends React.Component<
+export class ErrorBoundary extends React.Component<
   IErrorBoundary,
   IErrorBoundaryState
 > {
@@ -18,9 +18,9 @@ class ErrorBoundary extends React.Component<
     errors: undefined,
   };
 
-  static getDerivedStateFromError() {
-    return { hasError: true };
-  }
+  // static getDerivedStateFromError() {
+  //   return { hasError: true };
+  // }
 
   componentDidCatch(errors: Error, errorInfo: ErrorInfo) {
     this.setState({
@@ -37,5 +37,3 @@ class ErrorBoundary extends React.Component<
     return this.props.children;
   }
 }
-
-export { ErrorBoundary };

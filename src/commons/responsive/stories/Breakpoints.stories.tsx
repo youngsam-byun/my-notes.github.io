@@ -1,5 +1,5 @@
 import useResizeObserver from 'use-resize-observer/polyfilled';
-import { CreateBreakpointContext } from './create-breakpoint-context';
+import { CreateBreakpointContext } from '../create-breakpoint-context';
 import {
   DesktopAndDown,
   DesktopAndUp,
@@ -9,9 +9,9 @@ import {
   TabletAndUp,
   TabletOnly,
   WideDesktopAndUp,
-} from './Breakpoints';
+} from '../Breakpoints';
 import React from 'react';
-import { viewPorts } from '../viewports/viewports';
+import { viewPorts } from '../../viewports/viewports';
 import { Story } from '@storybook/react';
 
 const PHONE_ONLY = 'PhoneOnly';

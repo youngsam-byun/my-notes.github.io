@@ -1,7 +1,7 @@
 import React from 'react';
-import { viewPorts } from '../../commons/viewports/viewports';
+import { viewPorts } from '../../viewports/viewports';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { SuspenseExample } from './SuspenseExample';
+import { SuspenseExample } from '../SuspenseExample';
 
 export default {
   title: 'Components/SuspenseExample',

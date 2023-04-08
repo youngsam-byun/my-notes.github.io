@@ -1,19 +1,18 @@
 export function wrapPromise(promise: Promise<unknown>) {
   let status = 'pending';
-
-  let response: unknown;
+  let responseBody: unknown;
 
   // eslint-disable-next-line
   const suspender = promise.then(
     // eslint-disable-next-line promise/always-return
     (res) => {
       status = 'success';
-      response = res;
+      responseBody = res;
     },
     // eslint-disable-next-line promise/prefer-await-to-callbacks
     (err) => {
       status = 'error';
-      response = err;
+      responseBody = err;
     },
   );
 
@@ -22,9 +21,9 @@ export function wrapPromise(promise: Promise<unknown>) {
       case 'pending':
         throw suspender;
       case 'error':
-        throw response;
+        throw responseBody;
       default:
-        return response;
+        return responseBody;
     }
   }
 

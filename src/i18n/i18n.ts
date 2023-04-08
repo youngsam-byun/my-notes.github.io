@@ -11,4 +11,7 @@ i18next
     debug: process.env.NODE_ENV === 'development',
   });
 
-export const i18n = i18next;
+const i18n = i18next;
+
+// eslint-disable-next-line import/no-default-export
+export default i18n;
