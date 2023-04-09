@@ -19,7 +19,7 @@ const SDiv = styled.div<{
   height: ${(props) => (props.height ? props.height : 'auto')};
 `;
 
-export const Header = ({ children, color, bgColor, height }: IHeader) => {
+export const StyledHeader = ({ children, color, bgColor, height }: IHeader) => {
   return (
     <SDiv color={color} bgColor={bgColor} height={height}>
       {children}

@@ -1,9 +1,9 @@
 import React from 'react';
 import { ComponentMeta, Story } from '@storybook/react';
-import { I18nView } from './I18nView';
+import { I18nView } from '../I18nView';
 
 export default {
-  title: 'I18View',
+  title: 'Commons/I18View',
   component: I18nView,
   argTypes: {
     backgroundColor: { control: 'color' },

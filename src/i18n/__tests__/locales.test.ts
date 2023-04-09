@@ -1,4 +1,4 @@
-import { Locales, LocalesCode } from './locales';
+import { Locales, LocalesCode } from '../locales';
 
 describe('locales.test.ts', () => {
   describe('LocalesCode', () => {
