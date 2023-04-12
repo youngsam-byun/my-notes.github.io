@@ -1,40 +1,53 @@
 import { createGlobalStyle, css } from 'styled-components';
-
+import { defaultTheme } from './default-theme';
 export const DefaultGlobalStyle = createGlobalStyle` 
 ${({ theme }) => css`
-  .ui.container {
-    background-color: #f0f0f0;
-  }
-  .row {
-    background-color: #e0e0e0;
-  }
-  .grid {
-    background-color: #d0d0d0;
-  }
-  .column {
-    width: 5%;
-    border: 1px solid black;
-    display: inline-block;
-    width: 5%;
-    background-color: #ccccff;
-    position: relative;
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
-  }
+  html {
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    width: window.innerWidth;
+    height: window.innerHeight;
 
-  h1 {
-    font-size: 2rem;
-  }
-  h2 {
-    font-size: 1.5rem;
-  }
-  p {
-    font-size: 1rem;
-  }
-  body {
-    display: flex;
-    flex-direction: column;
-    justify-content: left;
+    .ui.container {
+      background-color: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: window.innerWidth;
+      height: window.innerHeight;
+      background: ${defaultTheme.colors.white};
+      color: ${defaultTheme.colors.black};
+      font-family: sans-serif;
+    }
+    .row {
+      background-color: #e0e0e0;
+    }
+    .grid {
+      background-color: #d0d0d0;
+    }
+    .column {
+      border: 1px solid black;
+      background-color: #c0c0c0;
+    }
+
+    h1 {
+      font-size: 3rem;
+    }
+    h2 {
+      font-size: 2.5rem;
+    }
+    h3 {
+      font-size: 2rem;
+    }
+    h4 {
+      font-size: 1.5rem;
+    }
+    p {
+      font-size: 1rem;
+    }
   }
 `}
 `;

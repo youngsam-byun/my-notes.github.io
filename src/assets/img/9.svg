@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg1048"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+   sodipodi:docname="10.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1050"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.72515432"
+     inkscape:cx="397.15684"
+     inkscape:cy="561.94935"
+     inkscape:window-width="2560"
+     inkscape:window-height="1001"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1045" />
+  <g
+     inkscape:label="레이어 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:64px;line-height:125%;font-family:'Arev Sans';-inkscape-font-specification:'Arev Sans';text-align:start;writing-mode:lr-tb;text-anchor:start;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 101.3546,132.11361 -4.464848,4.46484 2.24069,2.24069 -0.876432,0.87644 -2.24069,-2.24069 -2.926953,2.92695 -0.876432,-0.87643 2.926953,-2.92696 -2.24069,-2.24069 0.876432,-0.87643 2.24069,2.24069 4.47311,-4.47311 h -3.39824 v -1.24023 h 5.50664 v 5.50664 h -1.24023 v -3.38171"
+       id="text2449" />
+    <switch
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:125%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';text-align:center;writing-mode:lr-tb;text-anchor:middle;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="switch212"
+       transform="matrix(0.26458333,0,0,0.26458333,79.774518,57.813266)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         x="66.492188"
+         y="351.49368"
+         id="text2563-bs"
+         systemLanguage="bs"><tspan
+           sodipodi:role="line"
+           id="tspan2565-bs"
+           x="66.492188"
+           y="351.49368"
+           style="font-size:16px;line-height:1.25">Strijelac</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         x="66.492188"
+         y="351.49368"
+         id="text2563-es"
+         systemLanguage="es"><tspan
+           sodipodi:role="line"
+           id="tspan2565-es"
+           x="66.492188"
+           y="351.49368"
+           style="font-size:16px;line-height:1.25">Sagitario</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         x="66.492188"
+         y="351.49368"
+         id="text2563"><tspan
+           sodipodi:role="line"
+           id="tspan2565"
+           x="66.492188"
+           y="351.49368"
+           style="font-size:16px;line-height:1.25">Sagittarius</tspan></text>
+    </switch>
+  </g>
+</svg>

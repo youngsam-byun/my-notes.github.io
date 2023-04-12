@@ -1,7 +1,7 @@
 import React from 'react';
 import { viewPorts } from '../../viewports/viewports';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { SuspenseExample } from '../SuspenseExample';
+import { SuspenseExample } from './SuspenseExample';
 
 export default {
   title: 'Components/SuspenseExample',
@@ -16,4 +16,4 @@ export default {
 const Template: ComponentStory<typeof SuspenseExample> = (args) => (
   <SuspenseExample />
 );
-export const Primary = Template.bind({});
+export const Basic = Template.bind({});

@@ -1,15 +1,6 @@
-import React, { Suspense } from 'react';
-import { TestChildComponent } from './commons/error-boundary/stories/TestChildComponent';
-import { ErrorBoundary } from './commons/error-boundary/ErrorBoundary';
+import React from 'react';
+import { Container } from 'semantic-ui-react';
 
 export const App = () => {
-  return (
-    <div>
-      <ErrorBoundary>
-        <Suspense fallback={'Loading...'}>
-          <TestChildComponent />
-        </Suspense>
-      </ErrorBoundary>
-    </div>
-  );
+  return <Container>Body Area</Container>;
 };

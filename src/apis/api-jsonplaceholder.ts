@@ -2,7 +2,10 @@ import { wrapPromise } from '../commons/suspense/SuspenseUtil';
 import axios from 'axios';
 
 export function fetchAllPosts() {
-  const promise = axios.get('https://jsonplaceholder.typicode.com/posts');
+  const promise = axios
+    .get('https://jsonplaceholder.typicode.com/posts')
+    .then((res) => res.data);
+
   // @ts-ignore
   return wrapPromise(promise);
 }

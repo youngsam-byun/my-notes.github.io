@@ -14,6 +14,6 @@ export default {
 } as ComponentMeta<typeof MenuExampleHeader>;
 
 const Template: ComponentStory<typeof MenuExampleHeader> = (args) => (
-  <MenuExampleHeader {...args}>Header Title</MenuExampleHeader>
+  <MenuExampleHeader />
 );
-export const Primary = Template.bind({});
+export const Basic = Template.bind({});

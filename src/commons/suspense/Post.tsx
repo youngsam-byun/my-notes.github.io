@@ -1,13 +1,14 @@
 import React from 'react';
 
-export interface IPost {
+export interface PostProps {
   id: number;
   userId: string;
   title: string;
   body: string;
 }
 
-export function Post({ id, userId, title, body }: IPost) {
+export function Post(postProps: PostProps) {
+  const { id, userId, title, body } = postProps;
   return (
     <ul key={id}>
       <li>

@@ -1,11 +1,12 @@
 import React, { CSSProperties } from 'react';
 import { defaultTheme } from '../../styles/default-theme';
 import styled from 'styled-components';
-interface IHeader {
+interface GlobalHeaderProps {
   children?: React.ReactNode;
   color?: CSSProperties['color'];
   bgColor?: CSSProperties['backgroundColor'];
   height?: CSSProperties['height'];
+  title?: string;
 }
 
 const SDiv = styled.div<{
@@ -17,12 +18,24 @@ const SDiv = styled.div<{
   background-color: ${(props) =>
     props.bgColor ? props.bgColor : defaultTheme.colors.black};
   height: ${(props) => (props.height ? props.height : 'auto')};
+  text-align: center;
+  vertical-align: auto;
 `;
 
-export const StyledHeader = ({ children, color, bgColor, height }: IHeader) => {
+export const GlobalHeader = ({
+  children,
+  color,
+  bgColor,
+  height,
+  title = 'Header',
+}: GlobalHeaderProps) => {
   return (
-    <SDiv color={color} bgColor={bgColor} height={height}>
-      {children}
-    </SDiv>
+    <>
+      <SDiv color={color} bgColor={bgColor} height={height}>
+        <div>
+          <h3>{title}</h3>
+        </div>
+      </SDiv>
+    </>
   );
 };
