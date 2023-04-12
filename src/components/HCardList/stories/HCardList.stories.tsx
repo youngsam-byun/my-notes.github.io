@@ -1,19 +1,16 @@
 import React from 'react';
 import { viewPorts } from '../../../commons/viewports/viewports';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { HCard } from '../HCard';
+import { HCardList } from '../HCardList';
 export default {
-  title: 'Components/HCard',
-  component: HCard,
+  title: 'Components/HCardList',
+  component: HCardList,
   parameters: {
     viewport: {
       defaultViewport: viewPorts.wideDesktop,
     },
   },
-} as ComponentMeta<typeof HCard>;
+} as ComponentMeta<typeof HCardList>;
 
-const Template: ComponentStory<typeof HCard> = (args) => <HCard {...args} />;
+const Template: ComponentStory<typeof HCardList> = () => <HCardList />;
 export const Basic = Template.bind({});
-Basic.args = {
-  horoscope: 'aries',
-};

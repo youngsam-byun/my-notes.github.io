@@ -4,7 +4,20 @@ import styled from 'styled-components';
 import { getHCardInfo } from './hcard-util';
 
 interface HCardProps {
-  horoscope: string;
+  horoscope:
+    | string
+    | 'aquarius'
+    | 'aries'
+    | 'cancer'
+    | 'capricorn'
+    | 'gemini'
+    | 'leo'
+    | 'libra'
+    | 'pisces'
+    | 'sagittarius'
+    | 'scorpio'
+    | 'taurus'
+    | 'virgo';
   meta?: string;
 }
 

@@ -10,18 +10,6 @@ ${({ theme }) => css`
     width: window.innerWidth;
     height: window.innerHeight;
 
-    .ui.container {
-      background-color: #f0f0f0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: window.innerWidth;
-      height: window.innerHeight;
-      background: ${defaultTheme.colors.white};
-      color: ${defaultTheme.colors.black};
-      font-family: sans-serif;
-    }
     .row {
       background-color: #e0e0e0;
     }
@@ -47,6 +35,21 @@ ${({ theme }) => css`
     }
     p {
       font-size: 1rem;
+    }
+
+    body {
+      .ui.container {
+        background-color: #f0f0f0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: window.innerWidth;
+        height: window.innerHeight;
+        background: ${defaultTheme.colors.white};
+        color: ${defaultTheme.colors.black};
+        font-family: sans-serif;
+      }
     }
   }
 `}
