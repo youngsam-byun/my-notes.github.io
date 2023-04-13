@@ -11,27 +11,31 @@ export default {
     },
   },
   argTypes: {
-    control: {
-      type: 'select',
-      options: [
-        'aquarius',
-        'aries',
-        'cancer',
-        'capricorn',
-        'gemini',
-        'leo',
-        'libra',
-        'pisces',
-        'sagittarius',
-        'scorpio',
-        'taurus',
-        'virgo',
-      ],
+    horoscope: {
+      control: {
+        type: 'select',
+        options: [
+          'aquarius',
+          'aries',
+          'cancer',
+          'capricorn',
+          'gemini',
+          'leo',
+          'libra',
+          'pisces',
+          'sagittarius',
+          'scorpio',
+          'taurus',
+          'virgo',
+        ],
+      },
     },
   },
 } as ComponentMeta<typeof HCard>;
 
-const Template: ComponentStory<typeof HCard> = (args) => <HCard {...args} />;
+const Template: ComponentStory<typeof HCard> = (args) => {
+  return <HCard {...args} />;
+};
 export const Basic = Template.bind({});
 Basic.args = {
   horoscope: 'aries',

@@ -21,7 +21,7 @@ export interface HCardInfo {
 }
 
 export const emptyHCard: HCardInfo = {
-  id: -1,
+  id: 1,
   name: 'empty',
   src: '',
   header: '',
@@ -43,7 +43,7 @@ const ariesHCard: HCardInfo = {
   name: 'aries',
   src: aries,
   header: 'Aries',
-  description: 'Mar 21 - Apr 19',
+  description: 'Mar 21  Apr 19',
   meta: '',
 };
 const cancerHCard: HCardInfo = {
@@ -51,7 +51,7 @@ const cancerHCard: HCardInfo = {
   name: 'cancer',
   src: cancer,
   header: 'Cancer',
-  description: 'Jun 22 - Jul 22',
+  description: 'Jun 22  Jul 22',
   meta: '',
 };
 const capricornHCard: HCardInfo = {
@@ -59,7 +59,7 @@ const capricornHCard: HCardInfo = {
   name: 'capricorn',
   src: capricorn,
   header: 'Capricorn',
-  description: 'Dec 22 - January 19',
+  description: 'Dec 22  Jan 19',
   meta: '',
 };
 
@@ -68,7 +68,7 @@ const geminiHCard: HCardInfo = {
   name: 'gemini',
   src: gemini,
   header: 'Gemini',
-  description: 'Apr 20 - May 20',
+  description: 'Apr 20  May 20',
   meta: '',
 };
 const leoHCard: HCardInfo = {
@@ -76,7 +76,7 @@ const leoHCard: HCardInfo = {
   name: 'leo',
   src: leo,
   header: 'Leo',
-  description: 'Jul 23 - Aug 22',
+  description: 'Jul 23  Aug 22',
   meta: '',
 };
 const libraHCard: HCardInfo = {
@@ -84,7 +84,7 @@ const libraHCard: HCardInfo = {
   name: 'libra',
   src: libra,
   header: 'Libra',
-  description: 'Sep 22 - Oct 23',
+  description: 'Sep 22  Oct 23',
   meta: '',
 };
 const piscesHCard: HCardInfo = {
@@ -92,7 +92,7 @@ const piscesHCard: HCardInfo = {
   name: 'pisces',
   src: pisces,
   header: 'Pisces',
-  description: 'Feb 19 - Mar 20',
+  description: 'Feb 19  Mar 20',
   meta: '',
 };
 const sagittariusHCard: HCardInfo = {
@@ -100,7 +100,7 @@ const sagittariusHCard: HCardInfo = {
   name: 'sagittarius',
   src: sagittarius,
   header: 'Sagittarius',
-  description: 'Nov 22 - Dec 21',
+  description: 'Nov 22  Dec 21',
   meta: '',
 };
 const scorpioHCard: HCardInfo = {
@@ -108,7 +108,7 @@ const scorpioHCard: HCardInfo = {
   name: 'scorpio',
   src: scorpio,
   header: 'Scorpio',
-  description: 'Oct 23 - Nov 21',
+  description: 'Oct 23  Nov 21',
   meta: '',
 };
 
@@ -117,7 +117,7 @@ const taurusHCard: HCardInfo = {
   name: 'taurus',
   src: taurus,
   header: 'Taurus',
-  description: 'Apr 20 - May 20',
+  description: 'Apr 20  May 20',
   meta: '',
 };
 const virgoHCard: HCardInfo = {
@@ -125,22 +125,22 @@ const virgoHCard: HCardInfo = {
   name: 'virgo',
   src: virgo,
   header: 'Virgo',
-  description: 'Aug 23 - Sep 22',
+  description: 'Aug 23  Sep 22',
   meta: '',
 };
 
-export const hMap: Map<string, HCardInfo> = new Map([
-  [aquariusHCard.name, aquariusHCard],
-  [ariesHCard.name, ariesHCard],
-  [cancerHCard.name, cancerHCard],
-  [capricornHCard.name, capricornHCard],
-  [geminiHCard.name, geminiHCard],
-  [leoHCard.name, leoHCard],
-  [libraHCard.name, libraHCard],
-  [libraHCard.name, libraHCard],
-  [piscesHCard.name, piscesHCard],
-  [sagittariusHCard.name, sagittariusHCard],
-  [scorpioHCard.name, scorpioHCard],
-  [taurusHCard.name, taurusHCard],
-  [virgoHCard.name, virgoHCard],
+export const hMap: Map<number, HCardInfo> = new Map([
+  [aquariusHCard.id, aquariusHCard],
+  [ariesHCard.id, ariesHCard],
+  [cancerHCard.id, cancerHCard],
+  [capricornHCard.id, capricornHCard],
+  [geminiHCard.id, geminiHCard],
+  [leoHCard.id, leoHCard],
+  [libraHCard.id, libraHCard],
+  [libraHCard.id, libraHCard],
+  [piscesHCard.id, piscesHCard],
+  [sagittariusHCard.id, sagittariusHCard],
+  [scorpioHCard.id, scorpioHCard],
+  [taurusHCard.id, taurusHCard],
+  [virgoHCard.id, virgoHCard],
 ]);

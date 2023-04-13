@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import { Card, Image } from 'semantic-ui-react';
 import styled from 'styled-components';
 import { getHCardInfo } from './hcard-util';
 
-interface HCardProps {
-  horoscope:
+export interface HCardProps {
+  id: number;
+  horoscope?:
     | string
     | 'aquarius'
     | 'aries'
@@ -19,32 +20,51 @@ interface HCardProps {
     | 'taurus'
     | 'virgo';
   meta?: string;
+  flipCardId: number;
+  setFlipCardId: Dispatch<SetStateAction<number>>;
 }
 
-const SImage = styled(Image)`
-  width: 10rem;
-  height: 10rem;
+const SCardImage = styled(Image)`
+  width: 4rem;
+  height: 5rem;
   margin: auto;
 `;
 
-const SCard = styled(Card)`
-  width: 12rem !important;
-  height: auto;
+export const SCard = styled(Card)`
+  width: 6rem !important;
+  height: 11rem !important;
+  font-size: '1rem';
   text-align: center;
 `;
 
-export const HCard = (hCardProps: HCardProps) => {
-  const { horoscope } = hCardProps;
-  const { header, description, src } = getHCardInfo(horoscope);
+export function handleFlipOnCardClick(
+  id: number,
+  selectedId: number,
+  setFlipCardId: Dispatch<SetStateAction<number>>,
+) {
+  if (id === selectedId) {
+    setFlipCardId(-1);
+  } else {
+    setFlipCardId(id);
+  }
+}
+
+const hCard = (hCardProps: HCardProps): JSX.Element => {
+  const { flipCardId, setFlipCardId, id } = hCardProps;
+  const { header, description, src } = getHCardInfo(id);
   return (
-    <SCard>
+    <SCard onClick={() => handleFlipOnCardClick(id, flipCardId, setFlipCardId)}>
       <div>
-        <SImage src={src} />
+        <SCardImage src={src} />
       </div>
       <Card.Content>
-        <Card.Header>{header}</Card.Header>
+        <Card.Header>
+          {header.length > 6 ? `${header.substring(0, 6)}...` : header}
+        </Card.Header>
         <Card.Description>{description}</Card.Description>
       </Card.Content>
     </SCard>
   );
 };
+const HCard = React.memo(hCard);
+export { HCard };
