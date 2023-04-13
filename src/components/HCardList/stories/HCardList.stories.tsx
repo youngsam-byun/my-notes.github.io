@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { viewPorts } from '../../../commons/viewports/viewports';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { HCardList } from '../HCardList';
@@ -12,5 +12,8 @@ export default {
   },
 } as ComponentMeta<typeof HCardList>;
 
-const Template: ComponentStory<typeof HCardList> = () => <HCardList />;
+const Template: ComponentStory<typeof HCardList> = () => {
+  const [flipCardId, setFlipCardId] = useState<number>(-1);
+  return <HCardList flipCardId={flipCardId} setFlipCardId={setFlipCardId} />;
+};
 export const Basic = Template.bind({});

@@ -21,7 +21,7 @@ export interface HCardInfo {
 }
 
 export const emptyHCard: HCardInfo = {
-  id: 1,
+  id: -1,
   name: 'empty',
   src: '',
   header: '',
@@ -129,7 +129,7 @@ const virgoHCard: HCardInfo = {
   meta: '',
 };
 
-export const hMap: Map<number, HCardInfo> = new Map([
+export const hCardMap: Map<number, HCardInfo> = new Map([
   [aquariusHCard.id, aquariusHCard],
   [ariesHCard.id, ariesHCard],
   [cancerHCard.id, cancerHCard],
