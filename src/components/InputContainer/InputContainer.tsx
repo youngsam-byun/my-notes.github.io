@@ -1,7 +1,7 @@
 import React, {
   Dispatch,
   SetStateAction,
-  useCallback,
+  useEffect,
   useRef,
   useState,
 } from 'react';
@@ -34,34 +34,31 @@ export const InputContainer = (inputContainerProps: InputContainerProps) => {
   const [age, setAge] = useState<number>(-1);
   const [genderId, setGenderId] = useState<number>(-1);
 
-  const setFlipCardIdCallback = useCallback((cardId: number) => {
+  const setFlipCardIdCallback = (cardId: number) => {
     setFlipCardId(cardId);
-    if (ageSelectorRef.current)
-      ageSelectorRef.current.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      });
-  }, []);
+    ageSelectorRef.current?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  };
 
-  const setAgeCallback = useCallback((age: number) => {
+  const setAgeCallback = (age: number) => {
     setAge(age);
-    if (genderSelectorRef.current)
-      genderSelectorRef.current.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      });
-  }, []);
+    genderSelectorRef.current?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  };
 
-  const setGenderIdCallback = useCallback((genderId: number) => {
+  const setGenderIdCallback = (genderId: number) => {
     setGenderId(genderId);
-    if (buttonGroupRef.current)
-      buttonGroupRef.current.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      });
-  }, []);
+    buttonGroupRef.current?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  };
 
-  const resetCallback = useCallback(() => {
+  const resetCallback = () => {
     window.scrollTo({
       top: 0,
       left: 0,
@@ -70,12 +67,17 @@ export const InputContainer = (inputContainerProps: InputContainerProps) => {
     setFlipCardId(-1);
     setAge(-1);
     setGenderId(-1);
-  }, []);
-  const submitCallback = useCallback(async () => {
+  };
+
+  const submitCallback = async () => {
     setLoader(true);
     const res = await submitHoroscopeQuery();
     setHoroscopeResultCallback(res);
     setLoader(false);
+  };
+
+  useEffect(() => {
+    resetCallback();
   }, []);
 
   return (

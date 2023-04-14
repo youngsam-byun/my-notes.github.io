@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Container, Dimmer, Loader } from 'semantic-ui-react';
 import { InputContainer } from './components/InputContainer/InputContainer';
 import { OutputContainer } from './components/OutputContainer/OutputContainer';
@@ -7,14 +7,13 @@ export const App = () => {
   const outputContainerRef = useRef<HTMLDivElement>(null);
   const [horoscopeResult, setHoroscopeResult] = useState<string>('');
 
-  const setHoroscopeResultCallback = useCallback((result: string) => {
+  const setHoroscopeResultCallback = (result: string) => {
     setHoroscopeResult(result);
-    if (outputContainerRef.current)
-      outputContainerRef.current.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      });
-  }, []);
+    outputContainerRef.current?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  };
 
   const [loader, setLoader] = useState<boolean>(false);
   return (
