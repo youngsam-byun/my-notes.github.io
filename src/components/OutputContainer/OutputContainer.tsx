@@ -1,6 +1,8 @@
 import React, { ForwardedRef } from 'react';
 import styled from 'styled-components';
-import { Divider, Placeholder } from 'semantic-ui-react';
+import { Divider } from 'semantic-ui-react';
+import { EmptyPlaceHolder } from './EmptyPlaceHolder';
+import { ContentPlaceHolder } from './ContentPlaceHolder';
 
 interface OutputContainerProps {
   horoscopeResult: string;
@@ -9,35 +11,6 @@ interface OutputContainerProps {
 const SDiv = styled.div`
   margin-top: 2rem;
 `;
-
-const CPlaceHolder = () => {
-  return (
-    <Placeholder fluid>
-      <Placeholder.Header image>
-        <Placeholder.Line />
-        <Placeholder.Line />
-        <Placeholder.Line />
-        <Placeholder.Line />
-      </Placeholder.Header>
-      <Placeholder.Paragraph image>
-        <Placeholder.Line />
-        <Placeholder.Line />
-        <Placeholder.Line />
-      </Placeholder.Paragraph>
-      <Placeholder.Header image>
-        <Placeholder.Line />
-        <Placeholder.Line />
-        <Placeholder.Line />
-        <Placeholder.Line />
-      </Placeholder.Header>
-      <Placeholder.Paragraph image>
-        <Placeholder.Line />
-        <Placeholder.Line />
-        <Placeholder.Line />
-      </Placeholder.Paragraph>
-    </Placeholder>
-  );
-};
 
 const OutputContainer = React.forwardRef(
   (
@@ -49,8 +22,11 @@ const OutputContainer = React.forwardRef(
       <>
         <Divider />
         <SDiv>
-          <p>{horoscopeResult.length === 0 && <CPlaceHolder />}</p>
-          <div ref={ref} />
+          {horoscopeResult.length === 0 ? (
+            <EmptyPlaceHolder />
+          ) : (
+            <ContentPlaceHolder ref={ref} horoscopeResult={horoscopeResult} />
+          )}
         </SDiv>
       </>
     );

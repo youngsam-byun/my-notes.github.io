@@ -1,28 +1,14 @@
-import React, {
-  Dispatch,
-  SetStateAction,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
-import { Button, Divider } from 'semantic-ui-react';
+import React, { Dispatch, SetStateAction, useRef, useState } from 'react';
+import { Divider } from 'semantic-ui-react';
 import { HCardList } from '../HCardList/HCardList';
 import { AgeSelector } from '../AgeSelector/AgeSelector';
 import { GenderSelector } from '../GenderSelector/GenderSelector';
-import styled from 'styled-components';
-import { submitHoroscopeQuery } from '../../apis/api-horoscope';
+import { SubmitPanel } from '../SubmitPanel/SubmitPanel';
 
 interface InputContainerProps {
   setHoroscopeResultCallback: (result: string) => void;
   setLoader: Dispatch<SetStateAction<boolean>>;
 }
-
-const SDiv = styled.div`
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  margin-top: 2rem;
-`;
 
 export const InputContainer = (inputContainerProps: InputContainerProps) => {
   const cardSelectorRef = useRef<HTMLDivElement>(null);
@@ -69,17 +55,6 @@ export const InputContainer = (inputContainerProps: InputContainerProps) => {
     setGenderId(-1);
   };
 
-  const submitCallback = async () => {
-    setLoader(true);
-    const res = await submitHoroscopeQuery();
-    setHoroscopeResultCallback(res);
-    setLoader(false);
-  };
-
-  useEffect(() => {
-    resetCallback();
-  }, []);
-
   return (
     <>
       <div ref={cardSelectorRef}>
@@ -97,27 +72,11 @@ export const InputContainer = (inputContainerProps: InputContainerProps) => {
         <GenderSelector genderId={genderId} setGenderId={setGenderIdCallback} />
       </div>
       <Divider />
-      <SDiv ref={buttonGroupRef}>
-        <Button.Group>
-          <Button
-            basic
-            color={'red'}
-            size={'massive'}
-            onClick={() => resetCallback()}
-          >
-            Reset
-          </Button>
-          <Button.Or />
-          <Button
-            basic
-            color={'blue'}
-            size={'massive'}
-            onClick={() => submitCallback()}
-          >
-            Find Todays Horoscope
-          </Button>
-        </Button.Group>
-      </SDiv>
+      <SubmitPanel
+        setHoroscopeResultCallback={setHoroscopeResultCallback}
+        setLoader={setLoader}
+        resetCallback={resetCallback}
+      />
     </>
   );
 };

@@ -1,15 +1,10 @@
 import React from 'react';
-import {
-  CheckboxProps,
-  Divider,
-  Form,
-  Grid,
-  Radio,
-  Segment,
-} from 'semantic-ui-react';
+import { CheckboxProps, Divider, Form, Grid, Radio } from 'semantic-ui-react';
 import { getGenderInfo } from './gender-selector-util';
 import { genderMap } from './gender-selector-constants';
 import { defaultTheme } from '../../styles/default-theme';
+// import { useMediaQuery } from 'react-responsive';
+// import { viewPorts } from '../../commons/viewports/viewports';
 
 const genderInfoArray = Array.from(genderMap.values());
 
@@ -27,7 +22,12 @@ const genderSelector = (
     // @ts-ignore
     setGenderId(checkboxProps.value);
   }
+
   const genderInfo = getGenderInfo(genderId);
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  // const isMobile = useMediaQuery({
+  //   query: `(max-width: ${viewPorts.mobile.styles.width})`,
+  // });
   return (
     <>
       <Form.Field>
@@ -43,20 +43,18 @@ const genderSelector = (
         </h4>
       </Form.Field>
       <Divider hidden />
-      <Grid>
-        <Grid.Row columns={3}>
+      <Grid columns="three">
+        <Grid.Row>
           {genderInfoArray.map((gi) => {
             return (
               <Grid.Column key={gi.id}>
-                <Segment compact>
-                  <Radio
-                    label={gi.name}
-                    name={gi.name}
-                    value={gi.id}
-                    checked={gi.id === genderId}
-                    onChange={(e, value) => handleGenderOnChange(value)}
-                  />
-                </Segment>
+                <Radio
+                  label={gi.name}
+                  name={gi.name}
+                  value={gi.id}
+                  checked={gi.id === genderId}
+                  onChange={(e, value) => handleGenderOnChange(value)}
+                />
               </Grid.Column>
             );
           })}
