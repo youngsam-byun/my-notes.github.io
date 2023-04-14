@@ -14,7 +14,7 @@ export default {
 
 const Template: ComponentStory<typeof AgeSelector> = (args) => {
   const [age, setAge] = useState<number>(-1);
-  return <AgeSelector {...args} age={age} setAge={setAge} />;
+  return <AgeSelector {...args} age={age} setAgeCallback={setAge} />;
 };
 export const Basic = Template.bind({});
 Basic.args = {};

@@ -1,4 +1,10 @@
-import React, { Dispatch, SetStateAction, useCallback, useState } from 'react';
+import React, {
+  Dispatch,
+  SetStateAction,
+  useCallback,
+  useRef,
+  useState,
+} from 'react';
 import { Button, Divider } from 'semantic-ui-react';
 import { HCardList } from '../HCardList/HCardList';
 import { AgeSelector } from '../AgeSelector/AgeSelector';
@@ -19,7 +25,10 @@ const SDiv = styled.div`
 `;
 
 export const InputContainer = (inputContainerProps: InputContainerProps) => {
-  // eslint-disable-next-line no-unused-vars
+  const cardSelectorRef = useRef<HTMLDivElement>(null);
+  const ageSelectorRef = useRef<HTMLDivElement>(null);
+  const genderSelectorRef = useRef<HTMLDivElement>(null);
+  const buttonGroupRef = useRef<HTMLDivElement>(null);
   const { setHoroscopeResultCallback, setLoader } = inputContainerProps;
   const [flipCardId, setFlipCardId] = useState<number>(-1);
   const [age, setAge] = useState<number>(-1);
@@ -27,30 +36,41 @@ export const InputContainer = (inputContainerProps: InputContainerProps) => {
 
   const setFlipCardIdCallback = useCallback((cardId: number) => {
     setFlipCardId(cardId);
-    const element = document.getElementById('ageSelector');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    if (ageSelectorRef.current)
+      ageSelectorRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+  }, []);
+
+  const setAgeCallback = useCallback((age: number) => {
+    setAge(age);
+    if (genderSelectorRef.current)
+      genderSelectorRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
   }, []);
 
   const setGenderIdCallback = useCallback((genderId: number) => {
     setGenderId(genderId);
-    const element = document.getElementById('actionPanel');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    if (buttonGroupRef.current)
+      buttonGroupRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
   }, []);
 
   const resetCallback = useCallback(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
     setFlipCardId(-1);
     setAge(-1);
     setGenderId(-1);
-    const element = document.getElementById('cardSelector');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
   }, []);
-
   const submitCallback = useCallback(async () => {
     setLoader(true);
     const res = await submitHoroscopeQuery();
@@ -60,22 +80,22 @@ export const InputContainer = (inputContainerProps: InputContainerProps) => {
 
   return (
     <>
-      <div id={'cardSelector'}>
+      <div ref={cardSelectorRef}>
         <HCardList
           flipCardId={flipCardId}
-          setFlipCardId={setFlipCardIdCallback}
+          setFlipCardIdCallback={setFlipCardIdCallback}
         />
       </div>
       <Divider />
-      <div id={'ageSelector'}>
-        <AgeSelector age={age} setAge={setAge} />
+      <div ref={ageSelectorRef}>
+        <AgeSelector age={age} setAgeCallback={setAgeCallback} />
       </div>
       <Divider />
-      <div id={'genderSelector'}>
+      <div ref={genderSelectorRef}>
         <GenderSelector genderId={genderId} setGenderId={setGenderIdCallback} />
       </div>
       <Divider />
-      <SDiv id={'actionPanel'}>
+      <SDiv ref={buttonGroupRef}>
         <Button.Group>
           <Button
             basic

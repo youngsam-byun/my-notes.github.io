@@ -11,7 +11,7 @@ import { defaultTheme } from '../../styles/default-theme';
 
 interface HCardListProps {
   flipCardId: number;
-  setFlipCardId: (cardId: number) => void;
+  setFlipCardIdCallback: (cardId: number) => void;
 }
 
 const hCardInfoArray: HCardInfo[] = Array.from(hCardMap.values());
@@ -28,7 +28,7 @@ const HCardList_ = (hCardListProps: HCardListProps) => {
     columnSize,
   );
 
-  const { flipCardId, setFlipCardId } = hCardListProps;
+  const { flipCardId, setFlipCardIdCallback } = hCardListProps;
   const hCardInfo = getHCardInfo(flipCardId);
 
   return (
@@ -52,14 +52,14 @@ const HCardList_ = (hCardListProps: HCardListProps) => {
                   id={hc.id}
                   horoscope={hc.name}
                   flipCardId={flipCardId}
-                  setFlipCardId={setFlipCardId}
+                  setFlipCardId={setFlipCardIdCallback}
                 />
               ) : (
                 <HCard
                   id={hc.id}
                   horoscope={hc.name}
                   flipCardId={flipCardId}
-                  setFlipCardId={setFlipCardId}
+                  setFlipCardId={setFlipCardIdCallback}
                 />
               )}
             </Grid.Column>

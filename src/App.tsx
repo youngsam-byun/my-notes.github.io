@@ -1,28 +1,26 @@
-import React, { useCallback, useState } from 'react';
-import { Container, Dimmer, Divider, Loader } from 'semantic-ui-react';
+import React, { useCallback, useRef, useState } from 'react';
+import { Container, Dimmer, Loader } from 'semantic-ui-react';
 import { InputContainer } from './components/InputContainer/InputContainer';
 import { OutputContainer } from './components/OutputContainer/OutputContainer';
 
 export const App = () => {
+  const outputContainerRef = useRef<HTMLDivElement>(null);
   const [horoscopeResult, setHoroscopeResult] = useState<string>('');
 
   const setHoroscopeResultCallback = useCallback((result: string) => {
     setHoroscopeResult(result);
-    let element = document.getElementById('outputContainer');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-    element = document.getElementById('test-middle');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    if (outputContainerRef.current)
+      outputContainerRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
   }, []);
 
   const [loader, setLoader] = useState<boolean>(false);
   return (
     <>
       {loader && (
-        <Dimmer active>
+        <Dimmer active page>
           <Loader size="massive">Loading</Loader>
         </Dimmer>
       )}
@@ -31,10 +29,10 @@ export const App = () => {
           setHoroscopeResultCallback={setHoroscopeResultCallback}
           setLoader={setLoader}
         />
-        <Divider />
-        <div id={'outputContainer'}>
-          <OutputContainer horoscopeResult={horoscopeResult} />
-        </div>
+        <OutputContainer
+          horoscopeResult={horoscopeResult}
+          ref={outputContainerRef}
+        />
       </Container>
     </>
   );

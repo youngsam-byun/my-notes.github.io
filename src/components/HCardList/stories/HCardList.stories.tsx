@@ -14,6 +14,8 @@ export default {
 
 const Template: ComponentStory<typeof HCardList> = () => {
   const [flipCardId, setFlipCardId] = useState<number>(-1);
-  return <HCardList flipCardId={flipCardId} setFlipCardId={setFlipCardId} />;
+  return (
+    <HCardList flipCardId={flipCardId} setFlipCardIdCallback={setFlipCardId} />
+  );
 };
 export const Basic = Template.bind({});

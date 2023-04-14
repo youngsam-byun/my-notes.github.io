@@ -1,6 +1,7 @@
 import React, { CSSProperties } from 'react';
 import { defaultTheme } from '../../styles/default-theme';
 import styled from 'styled-components';
+import { hostname } from '../../commons/constants/constants';
 interface GlobalHeaderProps {
   children?: React.ReactNode;
   color?: CSSProperties['color'];
@@ -33,7 +34,11 @@ export const GlobalHeader = ({
     <>
       <SDiv color={color} bgColor={bgColor} height={height}>
         <div>
-          <h3>{title}</h3>
+          <h3>
+            <a href={hostname} style={{ color: defaultTheme.colors.white }}>
+              {title}
+            </a>
+          </h3>
         </div>
       </SDiv>
     </>
