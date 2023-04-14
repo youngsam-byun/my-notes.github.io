@@ -2,6 +2,7 @@ import React, { Dispatch, SetStateAction } from 'react';
 import { ageMaxRange, ageMinRange } from './age-selector-constants';
 import { Form } from 'semantic-ui-react';
 import styled from 'styled-components';
+import { defaultTheme } from '../../styles/default-theme';
 
 interface AgeSelectorProps {
   age: number;
@@ -22,7 +23,14 @@ const ageSelector = (ageSelectorProps: AgeSelectorProps): JSX.Element => {
   return (
     <Form>
       <Form.Field>
-        <h4>Your Age: {age}</h4>
+        <h4
+          style={{
+            color:
+              age > 0 ? defaultTheme.colors.blue : defaultTheme.colors.black,
+          }}
+        >
+          Your Age: {age}
+        </h4>
         <SInput
           type="range"
           min={ageMinRange}

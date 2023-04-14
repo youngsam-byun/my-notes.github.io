@@ -9,7 +9,7 @@ export const defaultTheme: DefaultTheme = {
     orange: '#ffa500',
     yellow: '0080000',
     green: '#ffff00',
-    blue: '#0000ff',
+    blue: '#2185d0',
     indigo: '#4b0082',
   },
 };

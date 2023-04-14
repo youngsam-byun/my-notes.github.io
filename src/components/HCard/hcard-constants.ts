@@ -22,7 +22,7 @@ export interface HCardInfo {
 
 export const emptyHCard: HCardInfo = {
   id: -1,
-  name: 'empty',
+  name: '',
   src: '',
   header: '',
   description: '',

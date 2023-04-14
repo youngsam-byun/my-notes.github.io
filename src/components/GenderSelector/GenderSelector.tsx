@@ -1,13 +1,21 @@
-import React, { Dispatch, SetStateAction } from 'react';
-import { CheckboxProps, Divider, Form, Grid, Radio } from 'semantic-ui-react';
+import React from 'react';
+import {
+  CheckboxProps,
+  Divider,
+  Form,
+  Grid,
+  Radio,
+  Segment,
+} from 'semantic-ui-react';
 import { getGenderInfo } from './gender-selector-util';
 import { genderMap } from './gender-selector-constants';
+import { defaultTheme } from '../../styles/default-theme';
 
 const genderInfoArray = Array.from(genderMap.values());
 
 interface GenderSelectorProps {
   genderId: number;
-  setGenderId: Dispatch<SetStateAction<number>>;
+  setGenderId: (prevState: number) => void;
 }
 
 const genderSelector = (
@@ -23,7 +31,16 @@ const genderSelector = (
   return (
     <>
       <Form.Field>
-        <h4>You are: {genderInfo.description}</h4>
+        <h4
+          style={{
+            color:
+              genderInfo.description.length > 0
+                ? defaultTheme.colors.blue
+                : defaultTheme.colors.black,
+          }}
+        >
+          You are: {genderInfo.description}
+        </h4>
       </Form.Field>
       <Divider hidden />
       <Grid>
@@ -31,13 +48,15 @@ const genderSelector = (
           {genderInfoArray.map((gi) => {
             return (
               <Grid.Column key={gi.id}>
-                <Radio
-                  label={gi.description}
-                  name={gi.name}
-                  value={gi.id}
-                  checked={gi.id === genderId}
-                  onChange={(e, value) => handleGenderOnChange(value)}
-                />
+                <Segment compact>
+                  <Radio
+                    label={gi.name}
+                    name={gi.name}
+                    value={gi.id}
+                    checked={gi.id === genderId}
+                    onChange={(e, value) => handleGenderOnChange(value)}
+                  />
+                </Segment>
               </Grid.Column>
             );
           })}

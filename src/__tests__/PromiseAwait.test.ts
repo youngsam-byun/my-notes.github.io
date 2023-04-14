@@ -1,16 +1,7 @@
+import { getPromise, normalFunction } from './promise-test-utils';
+
 // @ts-ignore
 describe('constants.test.ts', () => {
-  async function getPromise(name: string, ms: number): Promise<string> {
-    return new Promise<string>((resolve) => {
-      setTimeout(() => {
-        return resolve(name);
-      }, ms);
-    });
-  }
-
-  function normalFunction(name: string): string {
-    return 'normal function (' + name + ')';
-  }
   it('promise with await test', async () => {
     const startTime = Date.now();
     console.log(normalFunction('one'));

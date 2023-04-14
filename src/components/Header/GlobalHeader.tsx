@@ -19,7 +19,7 @@ const SDiv = styled.div<{
     props.bgColor ? props.bgColor : defaultTheme.colors.black};
   height: ${(props) => (props.height ? props.height : 'auto')};
   text-align: center;
-  margin: auto;
+  padding-top: 1rem;
 `;
 
 export const GlobalHeader = ({
