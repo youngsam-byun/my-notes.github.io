@@ -18,7 +18,7 @@ const Template: ComponentStory<typeof HCardFlip> = (args) => {
     <HCardFlip
       {...args}
       flipCardId={flipCardId}
-      setFlipCardId={setFlipCardId}
+      setFlipCardIdCallback={setFlipCardId}
     />
   );
 };

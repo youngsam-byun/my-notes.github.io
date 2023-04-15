@@ -1,7 +1,20 @@
-import { hCardMap, emptyHCard, HCardInfo } from './hcard-constants';
+import {
+  hCardMapById,
+  emptyHCard,
+  HCardInfo,
+  hCardMapByName,
+} from './hcard-constants';
 
-export function getHCardInfo(id: number): HCardInfo {
-  const hCardInfo = hCardMap.get(id);
+export function getHCardInfoById(id: number): HCardInfo {
+  const hCardInfo = hCardMapById.get(id);
+  if (hCardInfo === undefined) {
+    return emptyHCard;
+  }
+  return hCardInfo;
+}
+
+export function getHCardInfoByName(name: string): HCardInfo {
+  const hCardInfo = hCardMapByName.get(name);
   if (hCardInfo === undefined) {
     return emptyHCard;
   }

@@ -4,18 +4,22 @@ import { HCardList } from '../HCardList/HCardList';
 import { AgeSelector } from '../AgeSelector/AgeSelector';
 import { GenderSelector } from '../GenderSelector/GenderSelector';
 import { SubmitPanel } from '../SubmitPanel/SubmitPanel';
+import { HoroscopeResultType } from '../OutputContainer/output-container-constant';
 
 interface InputContainerProps {
-  setHoroscopeResultCallback: (result: string) => void;
+  setHoroscopeResult: Dispatch<SetStateAction<HoroscopeResultType | null>>;
   setLoader: Dispatch<SetStateAction<boolean>>;
 }
 
-export const InputContainer = (inputContainerProps: InputContainerProps) => {
+export const InputContainer = ({
+  setHoroscopeResult,
+  setLoader,
+}: InputContainerProps) => {
   const cardSelectorRef = useRef<HTMLDivElement>(null);
   const ageSelectorRef = useRef<HTMLDivElement>(null);
   const genderSelectorRef = useRef<HTMLDivElement>(null);
   const buttonGroupRef = useRef<HTMLDivElement>(null);
-  const { setHoroscopeResultCallback, setLoader } = inputContainerProps;
+
   const [flipCardId, setFlipCardId] = useState<number>(-1);
   const [age, setAge] = useState<number>(-1);
   const [genderId, setGenderId] = useState<number>(-1);
@@ -30,10 +34,6 @@ export const InputContainer = (inputContainerProps: InputContainerProps) => {
 
   const setAgeCallback = (age: number) => {
     setAge(age);
-    genderSelectorRef.current?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-    });
   };
 
   const setGenderIdCallback = (genderId: number) => {
@@ -61,6 +61,7 @@ export const InputContainer = (inputContainerProps: InputContainerProps) => {
         <HCardList
           flipCardId={flipCardId}
           setFlipCardIdCallback={setFlipCardIdCallback}
+          setFlipCardId={setFlipCardId}
         />
       </div>
       <Divider />
@@ -73,7 +74,7 @@ export const InputContainer = (inputContainerProps: InputContainerProps) => {
       </div>
       <Divider />
       <SubmitPanel
-        setHoroscopeResultCallback={setHoroscopeResultCallback}
+        setHoroscopeResult={setHoroscopeResult}
         setLoader={setLoader}
         resetCallback={resetCallback}
       />

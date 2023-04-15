@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { viewPorts } from '../../../commons/viewports/viewports';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { InputContainer } from '../InputContainer';
+import { HoroscopeResultType } from '../../OutputContainer/output-container-constant';
 
 export default {
   title: 'Components/InputContainer',
@@ -15,14 +16,14 @@ export default {
 
 const Template: ComponentStory<typeof InputContainer> = (args) => {
   // eslint-disable-next-line no-unused-vars
-  function setHoroscopeResult(result: string) {
-    console.log('setHoroscopeResult(); result = ' + result);
-  }
+  const [horoscopeResult, setHoroscopeResult] =
+    useState<HoroscopeResultType | null>(null);
   // eslint-disable-next-line no-unused-vars
   const [loader, setLoader] = useState<boolean>(false);
+
   return (
     <InputContainer
-      setHoroscopeResultCallback={setHoroscopeResult}
+      setHoroscopeResult={setHoroscopeResult}
       setLoader={setLoader}
     />
   );

@@ -11,10 +11,19 @@ const SCardImage = styled(Image)`
   background-repeat: repeat-y !important;
 `;
 const hCardFlip = (hCardProps: HCardProps): JSX.Element => {
-  const { flipCardId, setFlipCardId, id } = hCardProps;
+  const { flipCardId, setFlipCardId, setFlipCardIdCallback, id } = hCardProps;
 
   return (
-    <SCard onClick={() => handleFlipOnCardClick(id, flipCardId, setFlipCardId)}>
+    <SCard
+      onClick={() =>
+        handleFlipOnCardClick(
+          id,
+          flipCardId,
+          setFlipCardId,
+          setFlipCardIdCallback,
+        )
+      }
+    >
       <SCardImage src={cardBack} />
     </SCard>
   );

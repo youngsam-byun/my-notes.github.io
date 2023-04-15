@@ -1,23 +1,22 @@
-import React, { ForwardedRef } from 'react';
+import React from 'react';
+import { StickyPanel } from './StickyPanel';
+import { HoroscopeResultType } from './output-container-constant';
+import { Contents } from './Contents';
 
 interface ContentPlaceHolderProps {
-  horoscopeResult: string;
+  horoscopeResult: HoroscopeResultType;
 }
 
-const ContentPlaceHolder = React.forwardRef(
-  (
-    outputContainerProps: ContentPlaceHolderProps,
-    ref: ForwardedRef<HTMLDivElement>,
-  ) => {
-    const { horoscopeResult } = outputContainerProps;
-    return (
-      <>
-        {horoscopeResult}
-        <div ref={ref} />
-      </>
-    );
-  },
-);
+const ContentPlaceHolder = (outputContainerProps: ContentPlaceHolderProps) => {
+  const { horoscopeResult } = outputContainerProps;
+  const isResultShown = horoscopeResult !== null;
+  return (
+    <>
+      <StickyPanel isResultShown={isResultShown} />
+      <Contents {...horoscopeResult} />
+    </>
+  );
+};
 
 ContentPlaceHolder.displayName = 'ContentPlaceHolder';
 export { ContentPlaceHolder };

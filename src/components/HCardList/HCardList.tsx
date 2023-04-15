@@ -1,20 +1,21 @@
-import React from 'react';
-import { HCardInfo, hCardMap } from '../HCard/hcard-constants';
+import React, { Dispatch, SetStateAction } from 'react';
+import { HCardInfo, hCardMapById } from '../HCard/hcard-constants';
 import { Grid } from 'semantic-ui-react';
 import { HCard } from '../HCard/HCard';
 import { useMediaQuery } from 'react-responsive';
 import { viewPorts } from '../../commons/viewports/viewports';
 import { chunkArray } from '../../utils/array-utils';
 import { HCardFlip } from '../HCardFlip/HCardFlip';
-import { getHCardInfo } from '../HCard/hcard-util';
+import { getHCardInfoById } from '../HCard/hcard-util';
 import { defaultTheme } from '../../styles/default-theme';
 
 interface HCardListProps {
   flipCardId: number;
+  setFlipCardId: Dispatch<SetStateAction<number>>;
   setFlipCardIdCallback: (cardId: number) => void;
 }
 
-const hCardInfoArray: HCardInfo[] = Array.from(hCardMap.values());
+const hCardInfoArray: HCardInfo[] = Array.from(hCardMapById.values());
 const HCardList_ = (hCardListProps: HCardListProps) => {
   const isTablet = useMediaQuery({
     query: `(max-width: ${viewPorts.tablet.styles.width})`,
@@ -28,8 +29,8 @@ const HCardList_ = (hCardListProps: HCardListProps) => {
     columnSize,
   );
 
-  const { flipCardId, setFlipCardIdCallback } = hCardListProps;
-  const hCardInfo = getHCardInfo(flipCardId);
+  const { flipCardId, setFlipCardId, setFlipCardIdCallback } = hCardListProps;
+  const hCardInfo = getHCardInfoById(flipCardId);
 
   return (
     <Grid>
@@ -52,14 +53,16 @@ const HCardList_ = (hCardListProps: HCardListProps) => {
                   id={hc.id}
                   horoscope={hc.name}
                   flipCardId={flipCardId}
-                  setFlipCardId={setFlipCardIdCallback}
+                  setFlipCardId={setFlipCardId}
+                  setFlipCardIdCallback={setFlipCardIdCallback}
                 />
               ) : (
                 <HCard
                   id={hc.id}
                   horoscope={hc.name}
                   flipCardId={flipCardId}
-                  setFlipCardId={setFlipCardIdCallback}
+                  setFlipCardId={setFlipCardId}
+                  setFlipCardIdCallback={setFlipCardIdCallback}
                 />
               )}
             </Grid.Column>

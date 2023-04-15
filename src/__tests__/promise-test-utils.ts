@@ -1,5 +1,5 @@
-export async function getPromise(name: string, ms: number): Promise<string> {
-  return new Promise<string>((resolve) => {
+export async function getPromise<T>(name: T, ms: number): Promise<T> {
+  return new Promise((resolve) => {
     setTimeout(() => {
       return resolve(name);
     }, ms);

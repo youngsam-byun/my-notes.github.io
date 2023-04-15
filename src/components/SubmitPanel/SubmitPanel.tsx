@@ -4,9 +4,10 @@ import styled from 'styled-components';
 import { submitHoroscopeQuery } from '../../apis/api-horoscope';
 import { useMediaQuery } from 'react-responsive';
 import { viewPorts } from '../../commons/viewports/viewports';
+import { HoroscopeResultType } from '../OutputContainer/output-container-constant';
 
 interface SubmitPanelProps {
-  setHoroscopeResultCallback: (result: string) => void;
+  setHoroscopeResult: Dispatch<SetStateAction<HoroscopeResultType | null>>;
   setLoader: Dispatch<SetStateAction<boolean>>;
   resetCallback: () => void;
 }
@@ -23,13 +24,12 @@ const SubmitPanel = React.forwardRef(
     submitPanelProps: SubmitPanelProps,
     ref: ForwardedRef<HTMLDivElement>,
   ): JSX.Element => {
-    const { setHoroscopeResultCallback, setLoader, resetCallback } =
-      submitPanelProps;
+    const { setHoroscopeResult, setLoader, resetCallback } = submitPanelProps;
 
     const submitCallback = async () => {
       setLoader(true);
       const res = await submitHoroscopeQuery();
-      setHoroscopeResultCallback(res);
+      setHoroscopeResult(res);
       setLoader(false);
     };
 
@@ -39,7 +39,7 @@ const SubmitPanel = React.forwardRef(
     const isMobile = useMediaQuery({
       query: `(max-width: ${viewPorts.mobile.styles.width})`,
     });
-    const size = isMobile ? 'medium' : isTablet ? 'huge' : 'massive';
+    const size = isMobile ? 'medium' : isTablet ? 'large' : 'huge';
 
     return (
       <SDiv ref={ref}>
@@ -53,7 +53,12 @@ const SubmitPanel = React.forwardRef(
             Reset
           </Button>
           <Button.Or />
-          <Button color={'black'} size={size} onClick={() => submitCallback()}>
+          <Button
+            basic
+            color={'black'}
+            size={size}
+            onClick={() => submitCallback()}
+          >
             Today Horoscope
           </Button>
         </Button.Group>

@@ -1,37 +1,23 @@
-import React, { ForwardedRef } from 'react';
-import styled from 'styled-components';
+import React from 'react';
 import { Divider } from 'semantic-ui-react';
-import { EmptyPlaceHolder } from './EmptyPlaceHolder';
 import { ContentPlaceHolder } from './ContentPlaceHolder';
+import { HoroscopeResultType } from './output-container-constant';
 
 interface OutputContainerProps {
-  horoscopeResult: string;
+  horoscopeResult: HoroscopeResultType | null;
 }
 
-const SDiv = styled.div`
-  margin-top: 2rem;
-`;
-
-const OutputContainer = React.forwardRef(
-  (
-    outputContainerProps: OutputContainerProps,
-    ref: ForwardedRef<HTMLDivElement>,
-  ) => {
-    const { horoscopeResult } = outputContainerProps;
-    return (
-      <>
-        <Divider />
-        <SDiv>
-          {horoscopeResult.length === 0 ? (
-            <EmptyPlaceHolder />
-          ) : (
-            <ContentPlaceHolder ref={ref} horoscopeResult={horoscopeResult} />
-          )}
-        </SDiv>
-      </>
-    );
-  },
-);
+const OutputContainer = (outputContainerProps: OutputContainerProps) => {
+  const { horoscopeResult } = outputContainerProps;
+  return (
+    <>
+      <Divider />
+      {horoscopeResult !== null && (
+        <ContentPlaceHolder horoscopeResult={horoscopeResult} />
+      )}
+    </>
+  );
+};
 
 OutputContainer.displayName = 'OutputContainer';
 export { OutputContainer };

@@ -1,7 +1,7 @@
 import React, { CSSProperties } from 'react';
 import { defaultTheme } from '../../styles/default-theme';
 import styled from 'styled-components';
-import { hostname } from '../../commons/constants/constants';
+
 interface GlobalHeaderProps {
   children?: React.ReactNode;
   color?: CSSProperties['color'];
@@ -23,19 +23,21 @@ const SDiv = styled.div<{
   padding-top: 1rem;
 `;
 
-export const GlobalHeader = ({
+const globalHeader = ({
   children,
   color,
   bgColor,
   height,
   title = 'Header',
 }: GlobalHeaderProps) => {
+  const { protocol, hostname, port } = window.location;
+  const home = `${protocol}//${hostname}:${port}`;
   return (
     <>
       <SDiv color={color} bgColor={bgColor} height={height}>
         <div>
           <h3>
-            <a href={hostname} style={{ color: defaultTheme.colors.white }}>
+            <a href={home} style={{ color: defaultTheme.colors.white }}>
               {title}
             </a>
           </h3>
@@ -44,3 +46,6 @@ export const GlobalHeader = ({
     </>
   );
 };
+
+const GlobalHeader = React.memo(globalHeader);
+export { GlobalHeader };

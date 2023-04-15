@@ -3,8 +3,6 @@ import { CheckboxProps, Divider, Form, Grid, Radio } from 'semantic-ui-react';
 import { getGenderInfo } from './gender-selector-util';
 import { genderMap } from './gender-selector-constants';
 import { defaultTheme } from '../../styles/default-theme';
-// import { useMediaQuery } from 'react-responsive';
-// import { viewPorts } from '../../commons/viewports/viewports';
 
 const genderInfoArray = Array.from(genderMap.values());
 
@@ -24,10 +22,7 @@ const genderSelector = (
   }
 
   const genderInfo = getGenderInfo(genderId);
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  // const isMobile = useMediaQuery({
-  //   query: `(max-width: ${viewPorts.mobile.styles.width})`,
-  // });
+
   return (
     <>
       <Form.Field>

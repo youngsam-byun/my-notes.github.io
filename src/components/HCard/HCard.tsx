@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import { Card, Image } from 'semantic-ui-react';
 import styled from 'styled-components';
-import { getHCardInfo } from './hcard-util';
+import { getHCardInfoById } from './hcard-util';
 
 export interface HCardProps {
   id: number;
@@ -21,7 +21,8 @@ export interface HCardProps {
     | 'virgo';
   meta?: string;
   flipCardId: number;
-  setFlipCardId: (cardId: number) => void;
+  setFlipCardId: Dispatch<SetStateAction<number>>;
+  setFlipCardIdCallback: (cardId: number) => void;
 }
 
 const SCardImage = styled(Image)`
@@ -40,20 +41,30 @@ export const SCard = styled(Card)`
 export function handleFlipOnCardClick(
   id: number,
   selectedId: number,
-  setFlipCardId: (cardId: number) => void,
+  setFlipCardId: Dispatch<SetStateAction<number>>,
+  setFlipCardIdCallback: (cardId: number) => void,
 ) {
   if (id === selectedId) {
     setFlipCardId(-1);
   } else {
-    setFlipCardId(id);
+    setFlipCardIdCallback(id);
   }
 }
 
 const hCard = (hCardProps: HCardProps): JSX.Element => {
-  const { flipCardId, setFlipCardId, id } = hCardProps;
-  const { header, description, src } = getHCardInfo(id);
+  const { flipCardId, setFlipCardIdCallback, id, setFlipCardId } = hCardProps;
+  const { header, description, src } = getHCardInfoById(id);
   return (
-    <SCard onClick={() => handleFlipOnCardClick(id, flipCardId, setFlipCardId)}>
+    <SCard
+      onClick={() =>
+        handleFlipOnCardClick(
+          id,
+          flipCardId,
+          setFlipCardId,
+          setFlipCardIdCallback,
+        )
+      }
+    >
       <div>
         <SCardImage src={src} />
       </div>

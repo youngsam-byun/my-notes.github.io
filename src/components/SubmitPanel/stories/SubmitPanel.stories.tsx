@@ -49,7 +49,7 @@ const Template: ComponentStory<typeof SubmitPanel> = (args) => {
       {...args}
       ref={buttonGroupRef}
       setLoader={setLoader}
-      setHoroscopeResultCallback={setHoroscopeResultCallback}
+      setHoroscopeResult={setHoroscopeResultCallback}
       resetCallback={resetCallback}
     />
   );
