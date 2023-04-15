@@ -11,7 +11,6 @@ import { getHoroscopeResult } from './apis/api-horoscope';
 export const App = () => {
   const [searchParams] = useSearchParams();
   const str = searchParams.get(STR);
-
   const footerRef = useRef<HTMLDivElement>(null);
   const firstTimeRenderCheckRef = useRef<boolean>();
   const [horoscopeResult, setHoroscopeResult] =
@@ -23,13 +22,15 @@ export const App = () => {
       const res = await getHoroscopeResult(str);
       return setHoroscopeResult(res);
     }
+
     if (str !== null && str.length > 0) {
       fetchCache(str);
     }
   }, []);
 
-  useEffect(() => {
+  const setHoroscopeResultCallback = (result: HoroscopeResultType | null) => {
     if (firstTimeRenderCheckRef.current) {
+      setHoroscopeResult(result);
       footerRef.current?.scrollIntoView({
         behavior: 'smooth',
         block: 'start',
@@ -37,7 +38,11 @@ export const App = () => {
     } else {
       firstTimeRenderCheckRef.current = true;
     }
-  }, [horoscopeResult]);
+  };
+
+  useEffect(() => {
+    setHoroscopeResultCallback(horoscopeResult);
+  }, [horoscopeResult, setHoroscopeResult]);
 
   return (
     <>
@@ -48,7 +53,7 @@ export const App = () => {
       )}
       <Container>
         <InputContainer
-          setHoroscopeResult={setHoroscopeResult}
+          setHoroscopeResultCallback={setHoroscopeResultCallback}
           setLoader={setLoader}
         />
         <div ref={footerRef} />

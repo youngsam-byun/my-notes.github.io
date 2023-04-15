@@ -8,17 +8,17 @@ const genderInfoArray = Array.from(genderMap.values());
 
 interface GenderSelectorProps {
   genderId: number;
-  setGenderId: (prevState: number) => void;
+  setGenderIdCallback: (prevState: number) => void;
 }
 
 const genderSelector = (
   genderSelectorProps: GenderSelectorProps,
 ): JSX.Element => {
-  const { genderId, setGenderId } = genderSelectorProps;
+  const { genderId, setGenderIdCallback } = genderSelectorProps;
 
   function handleGenderOnChange(checkboxProps: CheckboxProps) {
     // @ts-ignore
-    setGenderId(checkboxProps.value);
+    setGenderIdCallback(checkboxProps.value);
   }
 
   const genderInfo = getGenderInfo(genderId);

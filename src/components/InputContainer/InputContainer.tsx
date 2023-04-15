@@ -7,12 +7,15 @@ import { SubmitPanel } from '../SubmitPanel/SubmitPanel';
 import { HoroscopeResultType } from '../OutputContainer/output-container-constant';
 
 interface InputContainerProps {
-  setHoroscopeResult: Dispatch<SetStateAction<HoroscopeResultType | null>>;
+  // setHoroscopeResult: Dispatch<SetStateAction<HoroscopeResultType | null>>;
+  setHoroscopeResultCallback: (
+    horoscopeResultType: HoroscopeResultType | null,
+  ) => void;
   setLoader: Dispatch<SetStateAction<boolean>>;
 }
 
 export const InputContainer = ({
-  setHoroscopeResult,
+  setHoroscopeResultCallback,
   setLoader,
 }: InputContainerProps) => {
   const cardSelectorRef = useRef<HTMLDivElement>(null);
@@ -30,10 +33,6 @@ export const InputContainer = ({
       behavior: 'smooth',
       block: 'start',
     });
-  };
-
-  const setAgeCallback = (age: number) => {
-    setAge(age);
   };
 
   const setGenderIdCallback = (genderId: number) => {
@@ -66,17 +65,23 @@ export const InputContainer = ({
       </div>
       <Divider />
       <div ref={ageSelectorRef}>
-        <AgeSelector age={age} setAgeCallback={setAgeCallback} />
+        <AgeSelector age={age} setAge={setAge} />
       </div>
       <Divider />
       <div ref={genderSelectorRef}>
-        <GenderSelector genderId={genderId} setGenderId={setGenderIdCallback} />
+        <GenderSelector
+          genderId={genderId}
+          setGenderIdCallback={setGenderIdCallback}
+        />
       </div>
       <Divider />
       <SubmitPanel
-        setHoroscopeResult={setHoroscopeResult}
+        setHoroscopeResultCallback={setHoroscopeResultCallback}
         setLoader={setLoader}
         resetCallback={resetCallback}
+        flipCardId={flipCardId}
+        age={age}
+        genderId={genderId}
       />
     </>
   );

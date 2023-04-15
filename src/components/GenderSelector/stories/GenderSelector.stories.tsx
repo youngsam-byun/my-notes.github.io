@@ -15,7 +15,11 @@ export default {
 const Template: ComponentStory<typeof GenderSelector> = (args) => {
   const [genderId, setGenderId] = useState<number>(-1);
   return (
-    <GenderSelector {...args} genderId={genderId} setGenderId={setGenderId} />
+    <GenderSelector
+      {...args}
+      genderId={genderId}
+      setGenderIdCallback={setGenderId}
+    />
   );
 };
 export const Basic = Template.bind({});

@@ -1,5 +1,5 @@
-import React, { Dispatch, ForwardedRef, SetStateAction } from 'react';
-import { Button } from 'semantic-ui-react';
+import React, { Dispatch, ForwardedRef, SetStateAction, useState } from 'react';
+import { Button, Message } from 'semantic-ui-react';
 import styled from 'styled-components';
 import { submitHoroscopeQuery } from '../../apis/api-horoscope';
 import { useMediaQuery } from 'react-responsive';
@@ -7,9 +7,14 @@ import { viewPorts } from '../../commons/viewports/viewports';
 import { HoroscopeResultType } from '../OutputContainer/output-container-constant';
 
 interface SubmitPanelProps {
-  setHoroscopeResult: Dispatch<SetStateAction<HoroscopeResultType | null>>;
+  setHoroscopeResultCallback: (
+    horoscopeResultType: HoroscopeResultType | null,
+  ) => void;
   setLoader: Dispatch<SetStateAction<boolean>>;
   resetCallback: () => void;
+  flipCardId: number;
+  genderId: number;
+  age: number;
 }
 
 const SDiv = styled.div`
@@ -24,13 +29,40 @@ const SubmitPanel = React.forwardRef(
     submitPanelProps: SubmitPanelProps,
     ref: ForwardedRef<HTMLDivElement>,
   ): JSX.Element => {
-    const { setHoroscopeResult, setLoader, resetCallback } = submitPanelProps;
+    const [validationMessage, setValidationMessage] = useState<Array<string>>(
+      [],
+    );
+
+    const {
+      setHoroscopeResultCallback,
+      setLoader,
+      resetCallback,
+      flipCardId,
+      genderId,
+      age,
+    } = submitPanelProps;
 
     const submitCallback = async () => {
-      setLoader(true);
-      const res = await submitHoroscopeQuery();
-      setHoroscopeResult(res);
-      setLoader(false);
+      const validationResult: Array<string> = [];
+      if (flipCardId === -1) {
+        validationResult.push('Select horoscope card');
+      }
+      if (age === -1) {
+        validationResult.push('Select age');
+      }
+      if (genderId === -1) {
+        validationResult.push('Select gender');
+      }
+
+      if (validationResult.length > 0) {
+        setValidationMessage(validationResult);
+      } else {
+        setLoader(true);
+        setValidationMessage([]);
+        const res = await submitHoroscopeQuery();
+        setHoroscopeResultCallback(res);
+        setLoader(false);
+      }
     };
 
     const isTablet = useMediaQuery({
@@ -42,27 +74,36 @@ const SubmitPanel = React.forwardRef(
     const size = isMobile ? 'medium' : isTablet ? 'large' : 'huge';
 
     return (
-      <SDiv ref={ref}>
-        <Button.Group>
-          <Button
-            basic
-            color={'black'}
-            size={size}
-            onClick={() => resetCallback()}
-          >
-            Reset
-          </Button>
-          <Button.Or />
-          <Button
-            basic
-            color={'black'}
-            size={size}
-            onClick={() => submitCallback()}
-          >
-            Today Horoscope
-          </Button>
-        </Button.Group>
-      </SDiv>
+      <>
+        {validationMessage.length === 0 ? null : (
+          <Message negative>
+            {validationMessage.map((msg, idx) => (
+              <p key={idx}>{msg}</p>
+            ))}
+          </Message>
+        )}
+        <SDiv ref={ref}>
+          <Button.Group>
+            <Button
+              basic
+              color={'black'}
+              size={size}
+              onClick={() => resetCallback()}
+            >
+              Reset
+            </Button>
+            <Button.Or />
+            <Button
+              basic
+              color={'black'}
+              size={size}
+              onClick={() => submitCallback()}
+            >
+              Today Horoscope
+            </Button>
+          </Button.Group>
+        </SDiv>
+      </>
     );
   },
 );

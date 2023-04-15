@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import { ageMaxRange, ageMinRange } from './age-selector-constants';
 import { Form } from 'semantic-ui-react';
 import styled from 'styled-components';
@@ -6,18 +6,18 @@ import { defaultTheme } from '../../styles/default-theme';
 
 interface AgeSelectorProps {
   age: number;
-  setAgeCallback: (age: number) => void;
+  setAge: Dispatch<SetStateAction<number>>;
 }
 
 const SInput = styled.input`
   width: 100%;
 `;
 const ageSelector = (ageSelectorProps: AgeSelectorProps): JSX.Element => {
-  const { age, setAgeCallback } = ageSelectorProps;
+  const { age, setAge } = ageSelectorProps;
 
   function handleAgeGroupOnChange(value: string) {
     const selectedId = parseInt(value);
-    setAgeCallback(selectedId);
+    setAge(selectedId);
   }
 
   return (

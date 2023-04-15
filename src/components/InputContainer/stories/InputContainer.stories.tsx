@@ -23,7 +23,7 @@ const Template: ComponentStory<typeof InputContainer> = (args) => {
 
   return (
     <InputContainer
-      setHoroscopeResult={setHoroscopeResult}
+      setHoroscopeResultCallback={setHoroscopeResult}
       setLoader={setLoader}
     />
   );
