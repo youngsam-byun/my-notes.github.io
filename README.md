@@ -1,39 +1,149 @@
-Act as an expert enterprise Java/Kotlin architect. Create a complete Maven multi-module project structure based on the following specifications. Provide the root `pom.xml` and the individual `pom.xml` files for each module, ensuring all correct Kotlin 2.1.0 configurations and dependencies are met.
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-### Project Specification
-- **Project Root Directory:** `kafka-cloud-poc`
-- **Language & Version:** Kotlin 2.1.0
-- **Build System:** Maven
-- **Common Test Stack (All Modules):** JUnit 5, MockK, and Maven Surefire Plugin configured for Kotlin.
+    <groupId>com.company.project</groupId>
+    <artifactId>parent-architecture</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
-### Module Hierarchy & Details:
+    <properties>
+        <java.version>17</java.version>
+        <kotlin.version>1.9.24</kotlin.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        
+        <spring-boot.version>3.3.4</spring-boot.version>
+        <mockk.version>1.13.12</mockk.version>
+        <detekt.version>1.23.6</detekt.version>
+        
+        <maven-surefire.version>3.2.5</maven-surefire.version>
+        <maven-failsafe.version>3.2.5</maven-failsafe.version>
+        <maven-antrun.version>3.1.0</maven-antrun.version>
+    </properties>
 
-1. **Root Module (`kafka-cloud-poc`)**
-   - Packaging: `pom`
-   - Should manage global versions (Kotlin 2.1.0, Spring Boot, MockK, Avro) in `<properties>` or `<dependencyManagement>`.
-   - Modules list: `app`, `v1`, `v2`.
+    <modules>
+        <module>application-api</module>
+    </modules>
 
-2. **`v1` Module (Kafka Producer/Consumer - Old Schema)**
-   - Purpose: Library/Module using current Avro schema for Kafka production and consumption.
-   - Dependencies: Kotlin stdlib, Apache Kafka / Spring Kafka, Avro compiler/dependencies.
-   - Testing: JUnit 5, MockK, Maven Surefire.
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
 
-3. **`v2` Module (Kafka Producer/Consumer - New Schema)**
-   - Purpose: Library/Module using the new/upgraded Avro schema.
-   - Dependencies: Same stack as `v1` but isolated for the new schema POC.
-   - Testing: JUnit 5, MockK, Maven Surefire.
+            <dependency>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-stdlib</artifactId>
+                <version>${kotlin.version}</version>
+            </dependency>
 
-4. **`app` Module (Spring Boot Application)**
-   - Purpose: Main executable Spring Boot application acting as the POC orchestrator.
-   - Dependencies: Must depend on both `v1` and `v2` modules. Includes Spring Boot Starter Web/Kafka.
-   - Build: Include `spring-boot-maven-plugin`.
-   - Testing: JUnit 5, MockK, `spring-boot-starter-test`, Maven Surefire.
+            <dependency>
+                <groupId>io.mockk</groupId>
+                <artifactId>mockk-jvm</artifactId>
+                <version>${mockk.version}</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
-### Output Requirements:
-1. Provide the exact directory tree layout.
-2. Provide the full code for:
-   - `kafka-cloud-poc/pom.xml`
-   - `kafka-cloud-poc/v1/pom.xml`
-   - `kafka-cloud-poc/v2/pom.xml`
-   - `kafka-cloud-poc/app/pom.xml`
-3. Ensure the `kotlin-maven-plugin` is configured properly for Kotlin 2.1.0 in all modules (or inherited from root) with `<jvmTarget>17</jvmTarget>` (or 21) and the correct test-compile execution phases.
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.jetbrains.kotlin</groupId>
+                    <artifactId>kotlin-maven-plugin</artifactId>
+                    <version>${kotlin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>compile</id>
+                            <phase>compile</phase>
+                            <goals><goal>compile</goal></goals>
+                        </execution>
+                        <execution>
+                            <id>test-compile</id>
+                            <phase>test-compile</phase>
+                            <goals><goal>test-compile</goal></goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${spring-boot.version}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven-surefire.version}</version>
+                    <configuration>
+                        <includes>
+                            <include>**/*Test.java</include>
+                            <include>**/*Test.kt</include>
+                        </includes>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-failsafe-plugin</artifactId>
+                    <version>${maven-failsafe.version}</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>integration-test</goal>
+                                <goal>verify</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <includes>
+                            <include>**/*IT.java</include>
+                            <include>**/*IT.kt</include>
+                        </includes>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-antrun-plugin</artifactId>
+                    <version>${maven-antrun.version}</version>
+                    <executions>
+                        <execution>
+                            <id>detekt</id>
+                            <phase>verify</phase>
+                            <goals><goal>run</goal></goals>
+                            <configuration>
+                                <target>
+                                    <java classname="io.gitlab.arturbosch.detekt.cli.Main" failonerror="true" fork="true">
+                                        <classpath refid="maven.plugin.classpath"/>
+                                        <arg value="--input"/>
+                                        <arg value="${project.basedir}/src/main/kotlin"/>
+                                        <arg value="--report"/>
+                                        <arg value="xml:${project.build.directory}/detekt.xml"/>
+                                    </java>
+                                </target>
+                            </configuration>
+                        </execution>
+                    </executions>
+                    <dependencies>
+                        <dependency>
+                            <groupId>io.gitlab.arturbosch.detekt</groupId>
+                            <artifactId>detekt-cli</artifactId>
+                            <version>${detekt.version}</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>
