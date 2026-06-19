@@ -4,6 +4,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.3.4</version>
+        <relativePath/> </parent>
+
     <groupId>com.company.project</groupId>
     <artifactId>parent-architecture</artifactId>
     <version>1.0.0-SNAPSHOT</version>
@@ -12,16 +18,10 @@
     <properties>
         <java.version>17</java.version>
         <kotlin.version>1.9.24</kotlin.version>
-        <maven.compiler.source>${java.version}</maven.compiler.source>
-        <maven.compiler.target>${java.version}</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         
-        <spring-boot.version>3.3.4</spring-boot.version>
         <mockk.version>1.13.12</mockk.version>
         <detekt.version>1.23.6</detekt.version>
         
-        <maven-surefire.version>3.2.5</maven-surefire.version>
-        <maven-failsafe.version>3.2.5</maven-failsafe.version>
         <maven-antrun.version>3.1.0</maven-antrun.version>
     </properties>
 
@@ -31,20 +31,6 @@
 
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring-boot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>org.jetbrains.kotlin</groupId>
-                <artifactId>kotlin-stdlib</artifactId>
-                <version>${kotlin.version}</version>
-            </dependency>
-
             <dependency>
                 <groupId>io.mockk</groupId>
                 <artifactId>mockk-jvm</artifactId>
@@ -76,15 +62,8 @@
                 </plugin>
 
                 <plugin>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-maven-plugin</artifactId>
-                    <version>${spring-boot.version}</version>
-                </plugin>
-
-                <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
-                    <version>${maven-surefire.version}</version>
                     <configuration>
                         <includes>
                             <include>**/*Test.java</include>
@@ -96,7 +75,6 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-failsafe-plugin</artifactId>
-                    <version>${maven-failsafe.version}</version>
                     <executions>
                         <execution>
                             <goals>
