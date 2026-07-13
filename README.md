@@ -1,6 +1,7 @@
+import com.fasterxml.jackson.databind.ObjectMapper
 import org.apache.kafka.common.security.auth.AuthenticateCallbackHandler
+import org.apache.kafka.common.security.oauthbearer.OAuthBearerToken
 import org.apache.kafka.common.security.oauthbearer.OAuthBearerTokenCallback
-import org.apache.kafka.common.security.oauthbearer.internals.secured.AccessTokenBuilder
 import java.io.FileInputStream
 import java.net.URI
 import java.net.http.HttpClient
@@ -10,8 +11,21 @@ import java.security.KeyStore
 import javax.net.ssl.SSLContext
 import javax.net.ssl.TrustManagerFactory
 import javax.security.auth.callback.Callback
-import com.fasterxml.jackson.databind.ObjectMapper // 또는 기존 프로젝트의 JSON 파서
 
+// 1. 카프카 표준 토큰 인터페이스 구현체
+class LocalOAuthBearerToken(
+    private val jwtToken: String,
+    private val principal: String,
+    private val lifetimeMillis: Long
+) : OAuthBearerToken {
+    override fun value(): String = jwtToken
+    override fun scope(): Set<String> = emptySet()
+    override fun lifetimeMs(): Long = lifetimeMillis
+    override fun principalName(): String = principal
+    override fun startTimeMs(): Long = System.currentTimeMillis()
+}
+
+// 2. 격리된 JKS 전용 커스텀 핸들러
 class LocalJksOAuth2Handler : AuthenticateCallbackHandler {
     private lateinit var httpClient: HttpClient
     private lateinit var tokenUrl: String
@@ -20,29 +34,26 @@ class LocalJksOAuth2Handler : AuthenticateCallbackHandler {
     private val objectMapper = ObjectMapper()
 
     override fun configure(configs: Map<String, *>, saslMechanism: String) {
-        // 1. 팩토리 Map 설정에서 경로와 패스워드를 다이렉트로 가로챔
+        // 카프카 브로커용으로 팩토리에 설정해 둔 JKS 경로를 그대로 재활용
         val truststorePath = configs["ssl.truststore.location"] as String
         val truststorePass = configs["ssl.truststore.password"] as String
 
-        // JAAS 설정 파싱 대신 편의상 Map에 넘긴 custom property 사용 가능
-        this.tokenUrl = configs["oauth.token.endpoint.url"] as String
-        this.clientId = configs["oauth.client.id"] as String
-        this.clientSecret = configs["oauth.client.secret"] as String
+        this.tokenUrl = configs["custom.oauth.token.endpoint.url"] as String
+        this.clientId = configs["custom.oauth.client.id"] as String
+        this.clientSecret = configs["custom.oauth.client.secret"] as String
 
-        // 2. JVM 전역 오염 없는 독립 KeyStore 빌드
+        // JVM 전역을 오염시키지 않고 이 HTTP 클라이언트에만 JKS 바인딩
         val keyStore = KeyStore.getInstance("JKS")
         FileInputStream(truststorePath).use { it.load(keyStore, truststorePass.toCharArray()) }
         val tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm()).apply { init(keyStore) }
         val sslContext = SSLContext.getInstance("TLS").apply { init(null, tmf.trustManagers, null) }
 
-        // 3. 이 JKS 전용 순수 Java HTTP 클라이언트 생성
         this.httpClient = HttpClient.newBuilder().sslContext(sslContext).build()
     }
 
     override fun handle(callbacks: Array<Callback>) {
         for (callback in callbacks) {
             if (callback is OAuthBearerTokenCallback) {
-                // 4. 카프카 내부 갱신 주기 스케줄러가 호출할 때마다 격리된 클라이언트로 HTTPS 요청
                 val request = HttpRequest.newBuilder()
                     .uri(URI.create(tokenUrl))
                     .header("Content-Type", "application/x-www-form-urlencoded")
@@ -50,13 +61,17 @@ class LocalJksOAuth2Handler : AuthenticateCallbackHandler {
                     .build()
 
                 val response = httpClient.send(request, HttpResponse.BodyHandlers.ofString())
-                val node = objectMapper.readTree(response.body())
-                val accessToken = node.get("access_token").asText()
                 
-                // 카프카가 인지할 수 있는 토큰 객체로 바인딩 (자동 만료/갱신 스케줄링 작동)
-                callback.token(AccessTokenBuilder.fromTokenString(accessToken))
+                val rootNode = objectMapper.readTree(response.body())
+                val accessToken = rootNode.get("access_token").asText()
+                val expiresInSeconds = rootNode.get("expires_in")?.asLong() ?: 300L
+                val lifetime = System.currentTimeMillis() + (expiresInSeconds * 1000)
+
+                // 토큰을 주입하면 이후 주기에 맞춰 카프카 엔진이 이 handle()을 자동 재호출하여 갱신합니다.
+                callback.token(LocalOAuthBearerToken(accessToken, clientId, lifetime))
             }
         }
     }
+
     override fun close() {}
 }
